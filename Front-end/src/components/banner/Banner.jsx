@@ -1,5 +1,5 @@
 import { Container } from './StyledBanner'
-import pracaRecife from '../assets/pracarecife.jpg'
+import pracaRecife from '../../assets/pracarecife.jpg'
 
 function Banner() {
   return (
