@@ -1,10 +1,17 @@
-import { Container } from './StyledBanner'
+import { Container, TextContainer, Overlay } from './StyledBanner'
 import pracaRecife from '../assets/pracarecife.jpg'
 
 function Banner() {
   return (
     <Container>
-      <img src={pracaRecife} alt="Marco Zero" />
+      <TextContainer>
+        <p>Text Text Text Text Text Text</p>
+        <p>Text Text Text Text Text Text</p>
+        <p>Text Text Text Text Text Text</p>
+      </TextContainer>
+      <Overlay>
+        <img src={pracaRecife} alt="Marco Zero" />
+      </Overlay>
     </Container>
   )
 }
