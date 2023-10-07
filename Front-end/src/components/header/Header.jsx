@@ -2,8 +2,8 @@ import React from 'react'
 
 import { StyledHeader, Navbar } from './StyledHeader'
 
-import recentroLogo from '../assets/logorecentro.png'
-import prefeituraLogo from '../assets/logoprefeitura.jpg'
+import recentroLogo from '../../assets/logorecentro.png'
+import prefeituraLogo from '../../assets/logoprefeitura.jpg'
 
 function Header() {
   return (
