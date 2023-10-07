@@ -1,4 +1,4 @@
-import { Container } from './StyledBanner'
+import { Container, TextContainer, Overlay } from './StyledBanner'
 import pracaRecife from '../../assets/pracarecife.jpg'
 
 function Banner() {
