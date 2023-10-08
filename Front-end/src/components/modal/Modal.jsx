@@ -1,16 +1,23 @@
-import { StyledModal } from './StyledModal'
+import { Overlay, StyledModal, TextContainer } from './StyledModal'
 
-function Modal() {
+import closeIcon from '../../assets/close.svg'
+
+import ReactPortal from '../portal/Portal'
+
+function Modal({ children, onCloseModal }) {
   return (
-    <StyledModal>
-      <div>
-        <h1>MODAL</h1>
-        <h1>MODAL</h1>
-        <h1>MODAL</h1>
-        <h1>MODAL</h1>
-        <h1>MODAL</h1>
-      </div>
-    </StyledModal>
+    <ReactPortal containerId='portal-root'>
+      <Overlay>
+        <StyledModal>
+          <TextContainer>
+            {children}
+          </TextContainer>
+          <button onClick={onCloseModal}>
+            <img src={closeIcon} alt="Botão de fechar" />
+          </button>
+        </StyledModal>
+      </Overlay>
+    </ReactPortal>
   )
 }
 
