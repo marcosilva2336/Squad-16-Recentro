@@ -12,4 +12,14 @@ export const Navbar = styled.nav`
   img {
     height: 60px;
   }
+
+  button {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #FF6900;
+    color: white;
+    margin-right: 20px;
+  }
 `
