@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyledFooter } from './StyledFooter'
-import logoRecentro from '../../assets/logorecentro.png'
+import logoRecentroFooter from '../../assets/logoRecentroFooter.png'
 
 function Footer() {
   return (
     <StyledFooter>
-      <img src={logoRecentro} alt="" />
+      <img src={logoRecentroFooter} alt="" />
     </StyledFooter>
   )
 }
