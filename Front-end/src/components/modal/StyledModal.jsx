@@ -1,56 +1,38 @@
 import styled from 'styled-components'
 
 export const Overlay = styled.div`
-  background-color: #000000;
   position: fixed;
   left: 0;
   top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 9999999;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #02020228;
+  background-color: #02020228;
 `
 
 export const StyledModal = styled.div`
+  position: relative;
+  display: flex;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  height: 250px;
   padding: 20px;
   background-color: #FF6900;
-  border-radius:20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 8px;
 
-  button {
-
-    img {
-      width: 20px;
-      height: 20px;
-
-    }
-    width: 20px;
-    height: 20px;
+  > button {
     position: absolute;
-    top: 260px;
-    right: 480px;
-    border: 0;
+    top: 0;
+    right: 0;
+    margin: 20px;
     background: transparent;
+    border: 0;
   }
 
-  form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+  img {
+    width: 20px;
   }
-
 `
-
-export const TextContainer = styled.div`
-
-`
-
-

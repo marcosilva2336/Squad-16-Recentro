@@ -30,28 +30,7 @@ function Header() {
         </div>
       </Navbar>
       {isModalOpen && (
-        <Modal onCloseModal={handleOpenModal}>
-          <h2>Conecte-se</h2>
-          <form>
-            <div className='inputContainer' >
-              <label htmlFor="email">E-mail</label>
-              <input
-                type='text'
-                name='email' 
-                id='email'
-              />
-            </div>
-            <div className='inputContainer' >
-              <label htmlFor="password">Senha</label>
-              <input
-                type='password'
-                name='password' 
-                id='password'
-              />
-            </div>
-            <button>Entrar</button>
-          </form>
-        </Modal>
+        <Modal onCloseModal={handleOpenModal} />
       )}
     </StyledHeader>
   )
