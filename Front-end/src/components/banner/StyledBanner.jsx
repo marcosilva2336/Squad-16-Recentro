@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Overlay = styled.div`
   width: 100%;
-  height: 300px;
+  height: 500px;
   background: linear-gradient(180deg, #FFF 0%, rgba(255, 105, 0, 0.40) 60.42%);
 `
 
@@ -14,7 +14,7 @@ export const Container = styled.div`
   img {
     opacity: 50%;
     object-fit: cover;
-    height: 300px;
+    height: 500px;
     width: 100%;
   }
 `

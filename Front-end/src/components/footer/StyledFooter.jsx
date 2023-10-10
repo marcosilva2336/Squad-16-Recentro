@@ -4,13 +4,18 @@ export const StyledFooter = styled.footer`
   
   bottom: 0;
   width: 100%;
+  height: 150px;
 
   padding: 1%;
-  background-color: #ff6900;
+  background-color: #FF6900;
 
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
-    height: 60px;
+    height: 80px;
+
   }
 `
