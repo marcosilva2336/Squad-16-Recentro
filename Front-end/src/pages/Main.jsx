@@ -3,6 +3,7 @@ import Footer from '../components/footer/Footer'
 import Banner from '../components/banner/Banner'
 import MapC from '../components/map/Map'
 import BoxMap from '../components/BoxMap/BoxMap'
+import Card from '../components/cards/Card'
 
 function Main() {
   return (
@@ -10,6 +11,7 @@ function Main() {
       <Header />
       <Banner />
       <BoxMap/>
+      <Card />
       <Footer />
     </>
 
