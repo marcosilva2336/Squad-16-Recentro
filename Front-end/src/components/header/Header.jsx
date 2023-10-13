@@ -25,7 +25,7 @@ function Header() {
         <div>
           <button onClick={handleOpenModal}>Login</button>
           <a href="https://www2.recife.pe.gov.br/">
-            <img src={prefeituraLogo} alt="Logo da Prefeitura" />
+            <img  src={prefeituraLogo} alt="Logo da Prefeitura" />
           </a>
         </div>
       </Navbar>
