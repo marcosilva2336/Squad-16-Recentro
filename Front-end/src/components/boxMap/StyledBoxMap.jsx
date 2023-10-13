@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const StyledBoxMap = styled.section`
-    
+
     display: flex;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 3%;
     margin-bottom: 10% ;
 
     .container {
@@ -25,18 +25,18 @@ export const StyledBoxMap = styled.section`
         animation: 0.3s;
         animation-name: boxAnimation ;
         animation-direction: alternate;
-        
-        
+
+
     }
 
     @keyframes boxAnimation {
         0% {
-        
-            
+
+
             height: 0px;
         }
         100% {
-         
+
            height: 20%;
         }
     }
@@ -58,7 +58,7 @@ export const StyledBoxMap = styled.section`
 
 
 
-    #buttonMenu {   
+    #buttonMenu {
      position: absolute;
      right: 60px;
      border: none;
