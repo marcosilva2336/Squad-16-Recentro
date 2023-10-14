@@ -3,7 +3,7 @@ import { Overlay, StyledModal } from './StyledModal'
 import closeIcon from '../../assets/close.svg'
 
 import ReactPortal from '../portal/Portal'
-import Login from '../login/Login'
+import Login from '../login-form/Login'
 
 function Modal({ onCloseModal }) {
   return (

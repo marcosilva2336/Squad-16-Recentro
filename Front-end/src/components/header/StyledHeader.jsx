@@ -26,6 +26,8 @@ export const Navbar = styled.nav`
     background-color: #FF6900;
     color: white;
     margin-right: 20px;
+    align-items:center;
+    display: flex;
   }
 
   div{

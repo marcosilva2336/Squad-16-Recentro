@@ -7,6 +7,8 @@ import Modal from '../modal/Modal'
 import recentroLogo from '../../assets/logorecentro.png'
 import prefeituraLogo from '../../assets/logoprefeitura.jpg'
 
+
+
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -23,7 +25,12 @@ function Header() {
           <img src={recentroLogo} alt="Logo da Recentro" />
         </a>
         <div>
-          <button onClick={handleOpenModal}>Login</button>
+          <button onClick={handleOpenModal}>
+          <span class="material-symbols-outlined">
+            person
+          </span>
+            Login
+          </button>
           <a href="https://www2.recife.pe.gov.br/">
             <img  src={prefeituraLogo} alt="Logo da Prefeitura" />
           </a>

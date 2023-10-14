@@ -5,9 +5,8 @@ function Banner() {
   return (
     <Container>
       <TextContainer>
-        <p>Text Text Text Text Text Text</p>
-        <p>Text Text Text Text Text Text</p>
-        <p>Text Text Text Text Text Text</p>
+        <p>o Gabinete do Centro do Recife realizou o Portfólio de levantamento dos imóveis do território quanto ao tipo de uso e possibilidade de reocupação</p>
+      
       </TextContainer>
       <Overlay>
         <img src={pracaRecife} alt="Marco Zero" />

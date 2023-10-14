@@ -23,7 +23,9 @@ export const TextContainer = styled.div`
   position: absolute;
   color: #FFFFF0;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 27px;
   display: block;
   z-index: 1;
+  max-width: 500px;
+  text-align: justify;
 `

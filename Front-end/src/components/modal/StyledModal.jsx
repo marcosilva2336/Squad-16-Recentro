@@ -20,7 +20,7 @@ export const StyledModal = styled.div`
   max-width: 600px;
   height: 250px;
   padding: 20px;
-  background-color: #FF6900;
+  background-color: #ffffff;
   border-radius: 8px;
 
   > button {
