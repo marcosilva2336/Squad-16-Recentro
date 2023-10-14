@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyledBoxMap } from './StyledBoxMap'
 import { useState } from 'react' 
-import arrowDown from '../../assets/arrowDown.png'
 import MapC from '../map/Map'
+import BarraPesquisa from '../barra-pesquisa/BarraPesquisa'
 import CheckBox from '../checkBox/CheckBox'
 
 
@@ -14,20 +14,31 @@ function BoxMap() {
 
     <>
       <StyledBoxMap>
-
+    
         <div className='container'>
+          <div className='boxPesquisa'>
+            <BarraPesquisa></BarraPesquisa>
+          </div>
           <MapC>
           </MapC>
           <div className='menuP'>
             <h1>Filtros</h1>
-            <button id='buttonMenu' onClick={() => setIsVisible(!isVisible)}><img src={arrowDown}/>  </button>
+            <button id='buttonMenu' onClick={() => setIsVisible(!isVisible)}>
+              <span className="material-symbols-outlined">
+                  expand_more
+              </span>
+            </button>
           </div>
 
           <div className={isVisible ? 'sumir' : 'menu'}>
-            
             <CheckBox nome='um' status='Disponiveis'></CheckBox>
-            <CheckBox nome='um' status='Ocupados'></CheckBox>
-
+            <CheckBox nome='dois' status='Ocupados'></CheckBox>
+            <CheckBox nome='tres' status='Em Obras'></CheckBox>
+            <CheckBox nome='quatro' status='Abandonados'></CheckBox>
+            <CheckBox nome='sete' status='CoWork'></CheckBox>
+            <CheckBox nome='oito' status='Recife Antigo'></CheckBox>
+            <CheckBox nome='nove' status='Santo Amaro'></CheckBox>
+            <CheckBox nome='dez' status='São José'></CheckBox>
           </div>
 
         </div>

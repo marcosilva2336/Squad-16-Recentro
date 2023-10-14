@@ -26,9 +26,9 @@ function Header() {
         </a>
         <div>
           <button onClick={handleOpenModal}>
-          <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
             person
-          </span>
+            </span>
             Login
           </button>
           <a href="https://www2.recife.pe.gov.br/">

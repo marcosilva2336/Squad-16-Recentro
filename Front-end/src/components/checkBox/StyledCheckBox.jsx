@@ -11,7 +11,7 @@ text-transform: uppercase;
 .box {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
 
 }
 

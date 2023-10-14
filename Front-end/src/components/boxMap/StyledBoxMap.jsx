@@ -6,14 +6,27 @@ export const StyledBoxMap = styled.section`
     justify-content: center;
     margin-top: 3%;
     margin-bottom: 10% ;
+    min-height: 120vh;
 
     .container {
     height: 920px;
     width: 90vw;
     }
 
+    .boxPesquisa {
+        width: 90vw;
+        display: flex;
+        margin-top: 30px;
+        position: absolute;
+        z-index: 1;
+        justify-content: center;
+    }
 
-
+.material-symbols-outlined {
+    margin-top: 8px;
+  font-size: 50px;
+  color: white;
+}
 
     .menu {
         margin-top: -10px;
@@ -25,6 +38,10 @@ export const StyledBoxMap = styled.section`
         animation: 0.3s;
         animation-name: boxAnimation ;
         animation-direction: alternate;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        
 
 
     }
