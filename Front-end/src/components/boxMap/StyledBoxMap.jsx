@@ -7,7 +7,6 @@ export const StyledBoxMap = styled.section`
     margin-top: 3%;
     margin-bottom: 10% ;
     min-height: 120vh;
-    background-color: red;
 
     .container {
     height: 57.5rem;
