@@ -31,14 +31,17 @@ function BoxMap() {
           </div>
 
           <div className={isVisible ? 'sumir' : 'menu'}>
-            <CheckBox nome='um' status='Disponiveis'></CheckBox>
-            <CheckBox nome='dois' status='Ocupados'></CheckBox>
-            <CheckBox nome='tres' status='Em Obras'></CheckBox>
-            <CheckBox nome='quatro' status='Abandonados'></CheckBox>
-            <CheckBox nome='sete' status='CoWork'></CheckBox>
-            <CheckBox nome='oito' status='Recife Antigo'></CheckBox>
-            <CheckBox nome='nove' status='Santo Amaro'></CheckBox>
-            <CheckBox nome='dez' status='São José'></CheckBox>
+
+            <div className='container-check'>
+              <CheckBox nome='um' status='Disponiveis'></CheckBox>
+              <CheckBox nome='dois' status='Ocupados'></CheckBox>
+              <CheckBox nome='tres' status='Em Obras'></CheckBox>
+              <CheckBox nome='quatro' status='Abandonados'></CheckBox>
+              <CheckBox nome='sete' status='CoWork'></CheckBox>
+              <CheckBox nome='oito' status='Recife Antigo'></CheckBox>
+              <CheckBox nome='nove' status='Santo Amaro'></CheckBox>
+              <CheckBox nome='dez' status='São José'></CheckBox>
+            </div>
           </div>
 
         </div>
