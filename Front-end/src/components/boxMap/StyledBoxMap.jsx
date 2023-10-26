@@ -7,11 +7,12 @@ export const StyledBoxMap = styled.section`
     margin-top: 3%;
     margin-bottom: 10% ;
     min-height: 120vh;
+    position: relative;
+
 
     .container {
     height: 57.5rem;
     width: 90vw;
-    }
 
     .boxPesquisa {
         width: 90vw;
@@ -50,7 +51,7 @@ export const StyledBoxMap = styled.section`
         width: 100%;
         animation: 400ms;
         overflow: auto;
-        animation-name: checkAnimation ;   
+        animation-name: checkAnimation ;
     }
 
     @keyframes checkAnimation {
@@ -59,7 +60,7 @@ export const StyledBoxMap = styled.section`
 
             opacity: 0;
         }
-        
+
     }
 
 
@@ -110,5 +111,6 @@ export const StyledBoxMap = styled.section`
         display: none;
 
     }
+
 
 `

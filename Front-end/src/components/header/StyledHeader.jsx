@@ -9,7 +9,7 @@ export const StyledHeader = styled.header`
 export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
-  
+
 
   img {
     height: 60px;
@@ -19,7 +19,7 @@ export const Navbar = styled.nav`
   }
 
   button {
-    
+
     padding: 15px;
     border-radius: 10px;
     border: 0;
