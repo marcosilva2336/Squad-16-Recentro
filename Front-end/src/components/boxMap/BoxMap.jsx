@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyledBoxMap } from './StyledBoxMap'
-import { useState } from 'react' 
+import { useState } from 'react'
 import MapC from '../map/Map'
 import BarraPesquisa from '../barra-pesquisa/BarraPesquisa'
 import CheckBox from '../checkBox/CheckBox'
+
 
 
 function BoxMap() {
@@ -14,14 +15,14 @@ function BoxMap() {
 
     <>
       <StyledBoxMap>
-    
+
         <div className='container'>
           <div className='boxPesquisa'>
             <BarraPesquisa></BarraPesquisa>
           </div>
           <MapC>
           </MapC>
-          <div className='menuP'>
+          <div className='menuP' >
             <h1>Filtros</h1>
             <button id='buttonMenu' onClick={() => setIsVisible(!isVisible)}>
               <span className="material-symbols-outlined">
