@@ -21,8 +21,8 @@ function Header() {
   return (
     <StyledHeader>
       <Navbar>
-        <a href="https://recentro.recife.pe.gov.br/">
-          <img src={recentroLogo} alt="Logo da Recentro" />
+      <a href="https://recentro.recife.pe.gov.br/">
+          <img className='Logo-recentro' src={recentroLogo} alt="Logo da Recentro" />
         </a>
         <div>
           <button onClick={handleOpenModal}>
@@ -32,7 +32,7 @@ function Header() {
             Login
           </button>
           <a href="https://www2.recife.pe.gov.br/">
-            <img  src={prefeituraLogo} alt="Logo da Prefeitura" />
+            <img className='Logo-recife'  src={prefeituraLogo} alt="Logo da Prefeitura" />
           </a>
         </div>
       </Navbar>

@@ -11,10 +11,10 @@ export const Navbar = styled.nav`
   justify-content: space-between;
 
 
-  img {
+  .Logo-recentro {
     height: 60px;
   }
-  #img01{
+  .Logo-recife{
     height: 50px;
   }
 
