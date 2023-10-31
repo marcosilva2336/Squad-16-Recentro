@@ -22,7 +22,7 @@ export const Container = styled.div`
 export const TextContainer = styled.div`
   position: absolute;
   color:#fff;
-  text-shadow: 1px 1px 0.5px black;
+  text-shadow: 1px 1px 5px black;
   font-weight: 600;
   font-size: 27px;
   display: block;

@@ -11,12 +11,13 @@ export const Navbar = styled.nav`
   justify-content: space-between;
   
 
-  img {
+  .Logo-recentro{
     height: 60px;
   }
-  #img01{
+.Logo-Prefeitura {
     height: 50px;
   }
+
 
   button {
     
