@@ -1,13 +1,12 @@
 import React from "react";
-import Sidebar from "../components/sidebar-adm/Sidebar";
+import Container from "../components/card-adm/container";
 
 function Admin(){
     return(
-        <div className="App">
-            <div className="AppGlass">
-            <Sidebar />
-            </div>
-        </div>
+        <>
+        <Container />
+        <h1>aaaaaaaaaaaaaa</h1>
+        </>
     )
 }
 
