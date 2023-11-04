@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import Logo from "../../assets/logorecentro.png";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
-import { SidebarData } from "../sidebar/TemplateSidebar";
+import { SidebarData } from "../sidebar-adm/TemplateSidebar";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 
