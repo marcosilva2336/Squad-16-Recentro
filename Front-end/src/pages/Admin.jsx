@@ -5,8 +5,9 @@ import Sidebar from "../components/sidebar-adm/Sidebar";
 function Admin(){
     return(
         <>
-        <Sidebar />
         <Container />
+        <Sidebar />
+        
         
         </>
     )
