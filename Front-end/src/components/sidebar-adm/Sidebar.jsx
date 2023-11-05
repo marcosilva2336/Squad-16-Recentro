@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import "./Sidebar.css";
 import Logo from "../../assets/logorecentro.png";
-import { UilSignOutAlt } from "@iconscout/react-unicons";
-import { SidebarData } from "../sidebar-adm/TemplateSidebar";
-import { UilBars } from "@iconscout/react-unicons";
+// import { UilSignOutAlt } from "@iconscout/react-unicons";
+import { SidebarData } from "./TemplateSidebar.js";
+import { FiHome,FiEdit, FiTrash2  } from 'react-icons/fi'
+
+
+// import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 
 const Sidebar = () => {
@@ -23,7 +26,7 @@ const Sidebar = () => {
   return (
     <>
       <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpaned(!expanded)}>
-        <UilBars />
+        <FiEdit />
       </div>
       <motion.div className='sidebar'
         variants={sidebarVariants}
@@ -50,7 +53,7 @@ const Sidebar = () => {
           })}
           {/* signoutIcon */}
           <div className="menuItem">
-            <UilSignOutAlt />
+            <FiHome />
             <p>Sair</p>
           </div>
         </div>

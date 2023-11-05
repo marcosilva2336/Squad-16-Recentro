@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
-export const Cardi = styled.div`
+export const StyledContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+`
+
+export const Box = styled.div`
     display: flex;
     position: relative;
     padding: 15px;

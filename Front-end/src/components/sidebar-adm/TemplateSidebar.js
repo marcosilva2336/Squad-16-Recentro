@@ -1,38 +1,37 @@
 // Sidebar imports
-import {
-    UilEstate,
-    UilClipboardAlt,
-    UilUsersAlt,
-    UilPackage,
-    UilChart,
-    UilSignOutAlt,
-  } from "@iconscout/react-unicons";
+// import {
+//     UilEstate,
+//     UilClipboardAlt,
+//     UilUsersAlt,
+//     UilPackage,
+//     UilChart,
+//     UilSignOutAlt,
+//   } from "@iconscout/react-unicons";
+  import { FiHome,FiEdit, FiTrash2  } from 'react-icons/fi'
   
-  // Analytics Cards imports
-  import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
   
   
   
   // Sidebar Data
   export const SidebarData = [
     {
-      icon: UilEstate,
+      icon: FiHome,
       heading: "Painel",
     },
     {
-      icon: UilClipboardAlt,
+      icon: FiEdit,
       heading: "Orders",
     },
     {
-      icon: UilUsersAlt,
+      icon: FiTrash2,
       heading: "Adicionar Usuário",
     },
     {
-      icon: UilPackage,
+      icon: FiHome,
       heading: 'Products'
     },
     {
-      icon: UilChart,
+      icon: FiEdit,
       heading: 'Analytics'
     },
   ];

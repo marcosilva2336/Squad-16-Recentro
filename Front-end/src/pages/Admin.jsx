@@ -1,12 +1,17 @@
 import React from "react";
-import Container from "../components/card-adm/container";
 import Sidebar from "../components/sidebar-adm/Sidebar";
+import Cards from "../components/card-adm/Cards";
+import { StyledContainer } from "../components/card-adm/StyledCard"
 
 function Admin(){
     return(
         <>
-        <Container />
-        <Sidebar />
+            <Sidebar />
+            <StyledContainer>
+                <Cards bairro='1' />
+                <Cards bairro='2' />
+                <Cards bairro='3' />
+            </StyledContainer>
         
         
         </>
