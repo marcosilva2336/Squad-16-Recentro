@@ -2,20 +2,25 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
+    /* background-color: aqua; */
+    height: 168px;
+    width: 100%;
+    /* margin-left: 2%; */
+    margin-top: 2rem;
+    justify-content:center;
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
 `
 
 export const Box = styled.div`
     display: flex;
     position: relative;
     padding: 15px;
-    width: 500px;
+    width: 420px;
     height: 145px;
     background-color: #FFF;
-    margin: 10px;
+    margin: 10px 35px;
     border-radius: 20px;
     box-shadow: 4px 4px 12px #aaa;
     
