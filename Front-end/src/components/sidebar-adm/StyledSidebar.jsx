@@ -10,6 +10,7 @@ gap: 1rem;
 align-items: center;
 justify-content: center;
 height: 4%;
+background-color: white;
 .logo > span > span {
   color: var(--pink);
 }
@@ -20,4 +21,5 @@ height: 4%;
   margin-left: 0.5rem;
 
 }
+
 `

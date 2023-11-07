@@ -17,19 +17,19 @@ export const Box = styled.div`
     display: flex;
     position: relative;
     padding: 15px;
-    width: 420px;
+    width: 370px;
     height: 145px;
     background-color: #FFF;
     margin: 10px 35px;
     border-radius: 20px;
-    box-shadow: 4px 4px 12px #aaa;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     
 
     h1{
         position: absolute;
         top: 25px;
         left: 20px;
-        color: #222222;
+        color: #000000;
         font-size: 25px;
     }
 
@@ -44,22 +44,32 @@ export const Box = styled.div`
     .icon {
         position: absolute;
         top: 45px;
-        left: 350px; 
+        left: 290px; 
+        color: #FF6900;
     }
 
     // media query do card
-    @media (max-width: 1440px) {
-        width: 400px;
+    @media (max-width: 1400px) {
+        width: 280px;
         .icon {
-            left: 300px; /* Adjust the position for smaller screens */
+            left: 220px; 
         }
     }
+      
+    @media (max-width: 768px){
+       width: 100%;
+         h1{
+         font-size: 22px;
+         }
 
-    @media (max-width: 375px) {
-        .icon {
-            left: 250px; /* Adjust the position for smaller screens */
+         p{
+            font-size: 40px;
+         }
+         .icon {
+          display: none;
         }
     }
+   
 
    
 `

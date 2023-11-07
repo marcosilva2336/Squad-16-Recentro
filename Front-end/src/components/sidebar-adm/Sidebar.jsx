@@ -1,36 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Sidebar.css";
 import Logo from "../../assets/logorecentro.png";
-// import { UilSignOutAlt } from "@iconscout/react-unicons";
 import { SidebarData } from "./TemplateSidebar.js";
-import { FiHome,FiEdit, FiTrash2  } from 'react-icons/fi'
-
-
-// import { UilBars } from "@iconscout/react-unicons";
+import { FiMenu } from 'react-icons/fi'
 import { motion } from "framer-motion";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
+  const [expanded, setExpaned] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const [expanded, setExpaned] = useState(true)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const sidebarVariants = {
-    true: {
-      left: '0'
-    },
-    false: {
-      left: '-60%'
-    }
-  }
-  console.log(window.innerWidth)
+    true: { left: '0' },
+    false: { left: '-60%' },
+  };
+
+  const toggleSidebar = () => {
+    setExpaned((prevExpanded) => !prevExpanded);
+  };
+
   return (
     <>
-      <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpaned(!expanded)}>
-        <FiEdit />
+      <div className="bars" onClick={toggleSidebar} style={{ zIndex: '10' }}>
+        <FiMenu />
       </div>
       <motion.div className='sidebar'
         variants={sidebarVariants}
-        animate={window.innerWidth <= 768 ? `${expanded}` : ''}
+        animate={isMobile ? expanded.toString() : "true"}
       >
         {/* logo */}
         <div className="logo">
@@ -46,16 +53,13 @@ const Sidebar = () => {
                 key={index}
                 onClick={() => setSelected(index)}
               >
-                <item.icon />
+                <item.icon className="icon" />
                 <span>{item.heading}</span>
               </div>
             );
           })}
           {/* signoutIcon */}
-          <div className="menuItem">
-            <FiHome />
-            <p>Sair</p>
-          </div>
+          
         </div>
       </motion.div>
     </>
