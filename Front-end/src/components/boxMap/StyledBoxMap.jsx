@@ -112,5 +112,10 @@ export const StyledBoxMap = styled.section`
 
     }
 
+    @media (max-width: 1440px) {
+      .menu{
+        height: 50vh;
+      }
+    }
 
 `

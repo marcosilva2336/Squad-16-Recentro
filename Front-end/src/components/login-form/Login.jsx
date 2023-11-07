@@ -10,12 +10,14 @@ function Login() {
           type='text'
           name='email'
           id='email'
+          required
         />
         <label htmlFor="password">Senha</label>
         <input
           type='password'
           name='password'
           id='password'
+          required
         />
         <button>Entrar</button>
       </FormContainer>
