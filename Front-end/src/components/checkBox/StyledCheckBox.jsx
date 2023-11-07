@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const StyledCheckBox = styled.div `
 
-width: 200px;
+
 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 text-transform: uppercase;
 
@@ -11,15 +11,14 @@ text-transform: uppercase;
 .box {
     display: flex;
     align-items: center;
-    margin-bottom: 60px;
-
 }
 
 label {
         
-        font-size: 20px;
+        font-size: 1rem;
+        display: block;
         color: white;
-        padding-left: 10px;
+        padding-left: 0.6rem;
         cursor: pointer;
     }
 
@@ -43,13 +42,12 @@ label {
     }
 
     .check {
-        width: 25px;
-        height: 25px;
+        width: 1.5rem;
+        height: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
-        border-radius: 100px;
+        border-radius: 6.5rem;
         background-color: #FFF;
         border: 4px solid #ffffff;
         box-shadow: 0px 0px 0px 0px #000000 inset;

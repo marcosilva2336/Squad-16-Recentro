@@ -9,18 +9,13 @@ export const StyledHeader = styled.header`
 export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
-  
 
-  .Logo-recentro{
-    height: 60px;
-  }
-.Logo-Prefeitura {
+  .Logo-Prefeitura {
     height: 50px;
   }
 
 
   button {
-    
     padding: 15px;
     border-radius: 10px;
     border: 0;
