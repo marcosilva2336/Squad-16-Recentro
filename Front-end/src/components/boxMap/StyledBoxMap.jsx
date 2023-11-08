@@ -7,11 +7,12 @@ export const StyledBoxMap = styled.section`
     margin-top: 3%;
     margin-bottom: 10% ;
     min-height: 120vh;
+    position: relative;
+
 
     .container {
-    height: 920px;
+    height: 57.5rem;
     width: 90vw;
-    }
 
     .boxPesquisa {
         width: 90vw;
@@ -29,22 +30,40 @@ export const StyledBoxMap = styled.section`
 }
 
     .menu {
-        margin-top: -10px;
-        padding: 30px;
+        min-height: 25vh;
+        margin-top: -0.8rem;
+        padding: 2.5rem;
         width: 90vw;
         background-color: #FD832E;
-        height: 25vh;
+        height: 12rem;
         border-radius: 0px 0px 20px 20px;
-        animation: 0.3s;
+        animation: 0.2s;
         animation-name: boxAnimation ;
-        animation-direction: alternate;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        
-
 
     }
+
+    .container-check {
+        display: inline-grid;
+        justify-content: center;
+        margin: auto;
+        grid-template-columns: 1fr 1fr 1fr 0fr;
+        grid-template-rows: 5rem;
+        width: 100%;
+        animation: 400ms;
+        overflow: auto;
+        animation-name: checkAnimation ;
+    }
+
+    @keyframes checkAnimation {
+
+        0% {
+
+            opacity: 0;
+        }
+
+    }
+
+
 
     @keyframes boxAnimation {
         0% {
