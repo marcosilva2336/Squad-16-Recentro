@@ -59,7 +59,7 @@ export const AddButton = styled.button`
   box-shadow: ${props => props.darkMode ? '2px 2px 4px rgba(255, 255, 255, 0.2)' : '2px 2px 4px rgba(0, 0, 0, 0.2)'};
   border-radius: 6px;
   text-decoration: none;
-  color: ${props => props.darkMode ? '#fff' : '#000'};
+  color: ${props => props.darkMode ? '#fffff' : '#000'};
 
   &:hover {
     background-color: ${props => props.darkMode ? '#f17f21' : '#f09611'};
