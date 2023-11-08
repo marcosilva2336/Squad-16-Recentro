@@ -1,5 +1,5 @@
 import { FiHome, FiUserPlus, FiBox, FiBarChart2, FiRotateCcw, FiLogOut, FiMoon, FiFileText } from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // Sidebar Data
 export const SidebarData = [
   {
@@ -8,7 +8,7 @@ export const SidebarData = [
   },
   {
     icon: FiMoon,
-    heading: "Modo Julio",
+    heading: "Modo Escuro",
   },
   {
     icon: FiUserPlus,
@@ -29,7 +29,7 @@ export const SidebarData = [
   {
     icon: FiRotateCcw,
     heading: 'Atualizar Imovel',
-    path: "/atualizar-imovel", 
+    to: "/atualizar-imovel", 
 
   },
   {

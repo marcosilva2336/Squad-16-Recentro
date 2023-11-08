@@ -3,34 +3,31 @@ import React from "react";
 import { FaCity, FaBuilding, FaLandmark } from 'react-icons/fa';
 import { Box } from "./StyledCard";
 
-function Cards(props) {
-    let bairro, valor, icone;
+function Cards({ bairro, darkMode }) { // Agora está recebendo darkMode como prop
+    let nomeBairro, valor, icone;
 
-    switch (props.bairro) {
+    switch (bairro) {
         case "1":
-            bairro = 'Santo Amaro';
+            nomeBairro = 'Santo Amaro';
             valor = 35;
-            // FaCity pode representar uma cidade
             icone = <FaCity className='icon' size={42} />;
             break;
         case "2":
-            bairro = 'Santo Antônio';
+            nomeBairro = 'Santo Antônio';
             valor = 75;
-            // FaBuilding pode representar prédios/áreas urbanas
             icone = <FaBuilding className='icon' size={42} />;
             break;
         case "3":
-            bairro = 'São José';
+            nomeBairro = 'São José';
             valor = 80;
-            // FaLandmark pode representar pontos de referência ou áreas conhecidas
             icone = <FaLandmark className='icon' size={42} />;
             break;
         // Adicione mais casos conforme necessário
     }
 
     return (
-        <Box>
-            <h1>{bairro}</h1>
+        <Box darkMode={darkMode}> {/* Agora o darkMode é passado para o Box */}
+            <h1>{nomeBairro}</h1>
             <p>{valor}</p>
             {icone}
         </Box>
