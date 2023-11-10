@@ -5,8 +5,9 @@ import Logo from "../../assets/logorecentro.png";
 import { SidebarData } from "./TemplateSidebar.js";
 import { FiMenu } from 'react-icons/fi';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
-const Sidebar = ({ onToggleDarkMode, darkMode }) => {  // Adicione o prop para a função de alternância
+const Sidebar = ({ onToggleDarkMode, darkMode }) => {
   const [selected, setSelected] = useState(0);
   const [expanded, setExpaned] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -17,7 +18,6 @@ const Sidebar = ({ onToggleDarkMode, darkMode }) => {  // Adicione o prop para a
     };
 
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -27,14 +27,16 @@ const Sidebar = ({ onToggleDarkMode, darkMode }) => {  // Adicione o prop para a
   };
 
   const toggleSidebar = () => {
-    setExpaned((prevExpanded) => !prevExpanded);
+    setExpaned(prevExpanded => !prevExpanded);
   };
 
-  // Esta função será chamada quando qualquer item do menu for clicado
   const handleMenuItemClick = (index) => {
     setSelected(index);
     if (SidebarData[index].heading === "Modo Escuro") {
       onToggleDarkMode(); 
+    }
+    if (isMobile) {
+      toggleSidebar();
     }
   };
 
@@ -44,31 +46,37 @@ const Sidebar = ({ onToggleDarkMode, darkMode }) => {  // Adicione o prop para a
         <FiMenu />
       </div>
       <motion.div
-        className={`sidebar ${darkMode ? "dark" : ""}`} // Aplica a classe "dark" baseado na prop darkMode
+        className={`sidebar ${darkMode ? "dark" : ""}`}
         variants={sidebarVariants}
         animate={isMobile ? expanded.toString() : "true"}
       >
-        {/* logo */}
         <div className="logo">
           <img src={Logo} alt="logo" />
-
         </div>
 
         <div className="menu">
           {SidebarData.map((item, index) => {
+            const isLink = item.to; // Verifica se o item tem uma propriedade 'to'
             return (
               <div
                 className={selected === index ? "menuItem active" : "menuItem"}
                 key={index}
-                onClick={() => handleMenuItemClick(index)}  // Modificado para usar a nova função
+                onClick={() => handleMenuItemClick(index)}
               >
-                <item.icon className="icon" />
-                <span>{item.heading}</span>
+                {isLink ? (
+                  <Link to={item.to} className="menu-item-link">
+                    <item.icon className="icon" />
+                    <span>{item.heading}</span>
+                  </Link>
+                ) : (
+                  <>
+                    <item.icon className="icon" />
+                    <span>{item.heading}</span>
+                  </>
+                )}
               </div>
             );
           })}
-          {/* signoutIcon */}
-
         </div>
       </motion.div>
     </>

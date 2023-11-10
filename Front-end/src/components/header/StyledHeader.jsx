@@ -10,6 +10,10 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
 
+
+  .Logo-recentro{
+    height: 60px;
+  }
   .Logo-Prefeitura {
     height: 50px;
   }
