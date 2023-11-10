@@ -1,6 +1,5 @@
-import { FiHome, FiUserPlus, FiBox, FiBarChart2, FiRotateCcw, FiLogOut, FiMoon, FiFileText } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
-// Sidebar Data
+import { FiHome, FiUserPlus, FiBarChart2, FiRotateCcw, FiLogOut, FiMoon, FiFileText, FiPlusSquare } from 'react-icons/fi';
+
 export const SidebarData = [
   {
     icon: FiHome,
@@ -15,25 +14,26 @@ export const SidebarData = [
     heading: "Adicionar Usuário",
   },
   {
-    icon: FiBox,
-    heading: 'Products',
-  },
-  {
     icon: FiBarChart2,
     heading: 'Analytics',
-  },
-  {
-    icon: FiFileText, // ícone de relatório ou log
-    heading: 'Relatórios',
+  }, {
+    icon: FiPlusSquare, // Este é o ícone de adicionar que você importou
+    heading: 'Adicionar Imóvel',
+    to: "/adicionar-imovel",
   },
   {
     icon: FiRotateCcw,
     heading: 'Atualizar Imovel',
-    to: "/atualizar-imovel", 
-
+    to: "/atualizar-imovel",
   },
+  {
+    icon: FiFileText,
+    heading: 'Relatórios',
+  },
+
   {
     icon: FiLogOut,
     heading: 'Sair',
+    // Aqui você implementaria a funcionalidade de logout
   },
 ];

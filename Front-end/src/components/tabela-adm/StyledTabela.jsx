@@ -1,58 +1,85 @@
 import styled from 'styled-components';
 
-// Estilizando o container da tabela
+export const ScrollableTableContainer = styled.div`
+  overflow-x: auto;
+  max-width: 100%;
+  
+`;
+
 export const TableContainer = styled.div`
-  display: flex;
+   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 20px;
-  max-width: 95%;
+  position: relative;
+  
   box-shadow: ${props => props.darkMode ? '0px 4px 12px rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 0.1) 0px 4px 12px'};
- position: relative;
+ 
   @media screen and (max-width:1400px){
     width: 92.5%;
   }
 `;
 
-// Estilizando o cabeçalho da tabela
-export const TableHeader = styled.div`
-  display: flex;
-  background: #FF6900; // Mantém a cor original do cabeçalho da tabela
+export const Table = styled.table`
+  width: 100%;
+  
+`;
+
+export const TableHeader = styled.thead`
+  background: #FF6900; 
   padding: 10px;
   font-weight: 600;
-  text-shadow: ${props => props.darkMode ? '1px 1px 4px #000' : '1px 1px 4px #222'}; // Sombra de texto mais forte no modo escuro
+  text-shadow: ${props => props.darkMode ? '1px 1px 4px #000' : '1px 1px 4px #222'}; 
   color: #fff;
+  
+  
 `;
-
-// Estilizando o corpo da tabela
-export const TableBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
+export const TableBody = styled.tbody`
   background: ${props => props.darkMode ? '#202529' : '#f9f9f9'};
+  
+  
 `;
 
-// Estilizando as linhas da tabela
-export const TableRow = styled.div`
-  display: flex;
-  padding: 10px;
+export const TableRow = styled.tr`
   &:nth-child(odd) {
-     // Cor mais escura para o modo escuro
+    background: ${props => props.darkMode ? '#303840' : '#f2f2f2'};
   }
+ 
 `;
 
-// Estilizando as células da tabela
-export const TableCell = styled.div`
-  flex: 1;
-  padding: 5px 10px;
-  color: ${props => props.darkMode ? '#fff' : 'inherit'}; // Texto branco no modo escuro
+export const TableCell = styled.td`
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ccc;
+  padding: 10px 20px;
 `;
 
-// Estilizando o botão de adicionar imóvel
-export const AddButton = styled.button`
-  position: absolute;
-  right: 20px;
-  bottom: -120px;
+
+
+export const SearchInput = styled.input`
+  margin-left: 22px;
+  margin-top: 18px;
+  width: 280px;
+  padding: 10px 40px 10px 20px;
+  border:none;
+  border-radius: 7px;
+  background-color: ${props => props.darkMode ? '#202529' : '#fff'};
+  color: ${props => props.darkMode ? '#fff' : '#333'};
+  box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : '0px 4px 12px rgba(0, 0, 0, 0.1)'};
+`;
+
+export const Title = styled.h1`
+  color: ${props => props.darkMode ? '#fff' : '#333'};
+  text-align: center;
+  margin-top: 45px;
+  font-weight: 600;
+`;
+
+export const ShowMoreButton = styled.button`
+ display: block;
+  width: max-content;
+  padding: 10px 20px;
+  margin: 10px 20px;
   background: transparent;
   padding: 10px 20px;
   border: 2px dashed #f09611;
@@ -64,22 +91,4 @@ export const AddButton = styled.button`
   &:hover {
     background-color: ${props => props.darkMode ? '#f17f21' : '#f09611'};
   }
-`;
-
-export const SearchInput = styled.input`
-  margin-left: 22px;
-  margin-top: 18px;
-  width: 280px;
-  padding: 10px 40px 10px 20px;
-  border: none;
-  border-radius: 7px;
-  background-color: ${props => props.darkMode ? '#202529' : '#fff'};
-  box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : '0px 4px 12px rgba(0, 0, 0, 0.1)'};
-`;
-
-export const Title = styled.h1`
-  color: ${props => props.darkMode ? '#fff' : '#333'};
-  text-align: center;
-  margin-top: 45px;
-  font-weight: 600;
 `;

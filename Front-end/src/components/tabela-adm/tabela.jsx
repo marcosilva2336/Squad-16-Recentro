@@ -1,31 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TableContainer, TableHeader, TableBody, TableRow, TableCell, AddButton, SearchInput, Title } from './StyledTabela';
+import { 
+  ScrollableTableContainer, 
+  TableContainer, 
+  TableHeader, 
+  TableBody, 
+  TableRow, 
+  TableCell,  
+  SearchInput, 
+  Title, 
+  ShowMoreButton 
+} from './StyledTabela';
 
 const Tabela = ({ darkMode }) => {
+    const [showAll, setShowAll] = useState(false);
+
+    // Gere dados fictícios com múltiplas colunas
+    const fakeData = Array.from({ length: 10 }, (_, index) => {
+      return Array.from({ length: 43 }, (_, colIndex) => `Dado ${colIndex + 1}-${index + 1}`);
+    });
+
+    // Ajuste os dados exibidos com base no estado 'showAll'
+    const displayedData = showAll ? fakeData : fakeData.map(row => row.slice(0, 10));
+
     return (
-        <>
-          <Title darkMode={darkMode}>Registro de Imóveis</Title>
-            <SearchInput darkMode={darkMode} placeholder="🔍 Pesquisar..." />
-            <TableContainer darkMode={darkMode}>
-                <TableHeader darkMode={darkMode}>
-                    <TableCell>ID</TableCell>
-                    <TableCell>Nome</TableCell>
-                    <TableCell>Localização</TableCell>
-                </TableHeader>
-                <TableBody darkMode={darkMode}>
-                    {/* Os dados da tabela iriam aqui */}
-                    <TableRow darkMode={darkMode}>
-                        <TableCell darkMode={darkMode}>1</TableCell>
-                        <TableCell darkMode={darkMode}>Imóvel Exemplo</TableCell>
-                        <TableCell darkMode={darkMode}>Cidade Exemplo</TableCell>
-                    </TableRow>
-                    {/* Repetir TableRow para cada linha de dados */}
-                </TableBody >
-                <AddButton darkMode={darkMode} as={Link} to="/caminho-para-adicionar-imovel">Adicionar Imóvel</AddButton>
-            </TableContainer>
-          
-        </>
+      <>
+        <Title darkMode={darkMode}>Registro de Imóveis</Title>
+        <SearchInput darkMode={darkMode} placeholder="🔍 Pesquisar..." />
+        <ScrollableTableContainer>
+          <TableContainer darkMode={darkMode}>
+            <table> 
+              <TableHeader darkMode={darkMode}>
+                <tr> 
+                  {Array.from({ length: showAll ? 43 : 10 }, (_, index) => (
+                    <TableCell darkMode={darkMode} key={index}>Coluna {index + 1}</TableCell>
+                  ))}
+                </tr>
+              </TableHeader>
+              <TableBody darkMode={darkMode}>
+                {displayedData.map((row, rowIndex) => (
+                  <TableRow key={rowIndex} darkMode={darkMode}>
+                    {row.map((cell, cellIndex) => (
+                      <TableCell darkMode={darkMode} key={cellIndex}>{cell}</TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </table>
+          </TableContainer>
+        </ScrollableTableContainer>
+        <ShowMoreButton darkMode={darkMode} onClick={() => setShowAll(!showAll)}>
+          {showAll ? 'Ver Menos' : 'Ver Mais'}
+        </ShowMoreButton>
+        
+      </>
     );
 };
 
