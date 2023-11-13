@@ -4,9 +4,9 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 
 export const Container = styled.div`
-  max-width: 1300px;
+  max-width: 1400px;
   height: 550px;
-  margin: 120px auto 20px;
+  margin: -90px auto 20px;
   padding: 50px;
   background-color: #fff;
   border-radius: 8px;
@@ -42,7 +42,7 @@ export const Step = styled.div`
   height: 60px;
   line-height: 200px;
   border-radius: 50%;
-  background-color: ${props => props.active ? '#ffa500' : '#ddd'};
+  background-color: ${props => props.active ? '#1f5f12' : '#ddd'};
   color: white;
   font-size: 30px;
   font-weight: 600;
