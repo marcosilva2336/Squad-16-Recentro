@@ -38,8 +38,6 @@ const Tabela = ({ darkMode }) => {
             case "Longitude":
               return Math.random().toFixed(2);
             case "Área Total":
-            case "Valor do Aluguel":
-            case "Valor de Venda":
               return `${Math.floor(Math.random() * 1000)} m²`;
             case "Rua":
               return `Rua ${rowIndex + 1}`;
@@ -74,15 +72,53 @@ const Tabela = ({ darkMode }) => {
               return `Observação ${rowIndex + 1}`;
             case "Proprietário Localizado":
               return ["Sim", "Não"][rowIndex % 2];
-            // Continue adicionando lógica para outros tipos de dados conforme necessário
-            default:
-              return `Dado ${colIndex + 1}-${rowIndex + 1}`;
-          }
-        });
-      });
-    };
-    
-
+              case "Investimento":
+                return ["Sim", "Não"][rowIndex % 2];
+              case "Qual Investimento":
+                return `Investimento ${Math.floor(Math.random() * 100000)}`;
+              case "Tributação":
+                return ["Alta", "Média", "Baixa"][rowIndex % 3];
+              case "Autorização de Informação":
+                return ["Autorizado", "Não Autorizado"][rowIndex % 2];
+              case "Proprietário Cartório":
+                return `Cartório ${rowIndex + 1}`;
+              case "Proprietário Campo":
+                return `Campo ${rowIndex + 1}`;
+              case "Contato Proprietário":
+                return `Contato ${rowIndex + 1}`;
+              case "Coincidência Proprietário":
+                return ["Sim", "Não"][rowIndex % 2];
+              case "Uso do Imóvel":
+                return ["Comercial", "Residencial", "Misto"][rowIndex % 3];
+                case "Valor do Aluguel":
+                case "Valor de Venda":
+                return `R$ ${Math.floor(Math.random() * 10000)}`;
+                case "Latitude":
+                  return (Math.random() * 180 - 90).toFixed(6); // Latitude varia de -90 a +90
+                case "Longitude":
+                  return (Math.random() * 360 - 180).toFixed(6); // Longitude varia de -180 a +180
+                case "RGI":
+                  return `RGI-${Math.floor(Math.random() * 10000)}`;
+                case "Planta":
+                  return ["Planta A", "Planta B", "Planta C"][rowIndex % 3];
+                case "Planta Regional":
+                  return ["Regional A", "Regional B", "Regional C"][rowIndex % 3];
+                case "Judicialização":
+                  return ["Sim", "Não"][rowIndex % 2];
+                case "Descrição da Judicialização":
+                  return `Descrição ${rowIndex + 1}`;
+                case "Observações":
+                  // Se você já tem um caso para "Observações", você pode ignorar ou modificar este
+                  return `Outra observação ${rowIndex + 1}`;
+                case "Processos Abertos Desde 2018":
+                  return Math.floor(Math.random() * 10);
+                // ... outros casos ...
+                default:
+                  return `Dado ${colIndex + 1}-${rowIndex + 1}`;
+              }
+            });
+          });
+        };
     const fakeData = generateFakeData();
 
     // Função para mudar o intervalo de colunas
