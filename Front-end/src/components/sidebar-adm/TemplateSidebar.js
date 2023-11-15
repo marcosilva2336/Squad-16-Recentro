@@ -34,6 +34,6 @@ export const SidebarData = [
   {
     icon: FiLogOut,
     heading: 'Sair',
-    // Aqui você implementaria a funcionalidade de logout
+    to: "/",
   },
 ];
