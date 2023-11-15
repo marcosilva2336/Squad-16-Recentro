@@ -13,6 +13,22 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
   z-index: 2;
+  @media screen and (max-width:768px){
+    width: 600px;
+    margin: -45px auto 10px;
+  }
+
+  @media screen and (max-width:425px){
+    width: 418px;
+    margin: -45px auto 10px;
+    padding: 20px;
+  }
+
+  @media screen and (max-width:375px){
+    width: 350px;
+    margin: -45px auto 5px;
+    padding: 20px;
+  }
 `;
 
 export const ProgressBar = styled.div`
@@ -23,6 +39,23 @@ export const ProgressBar = styled.div`
   margin-bottom: 30px;
   margin-left: 250px;
   margin-right: 250px;
+
+  @media screen and (max-width:768px){
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 50px;
+  }
+  @media screen and (max-width:425px){
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+  }
+  @media screen and (max-width:375px){
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 56px;
+  }
 
   &::after {
     content: '';
@@ -51,6 +84,15 @@ export const Step = styled.div`
   transition: background-color 0.4s ease;
   z-index: 2;
 
+  @media screen and (max-width:768px){
+   width: 45px;
+   height: 45px;
+  }
+
+  @media screen and (max-width:375px){
+    width: 40px;
+   height: 40px;
+  }
   &::before {
     content: attr(data-step);
     position: absolute;
@@ -78,6 +120,14 @@ export const FormField = styled.div`
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  @media screen and (max-width:768px){
+   flex: 0 0 calc(36% - 30px);
+  }
+
+  @media screen and (max-width:375px){
+   flex: 0 0 calc(35% - 10px);
   }
 `;
 

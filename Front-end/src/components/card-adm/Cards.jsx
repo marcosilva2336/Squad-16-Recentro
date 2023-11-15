@@ -8,17 +8,17 @@ function Cards({ bairro, darkMode }) { // Agora está recebendo darkMode como pr
 
     switch (bairro) {
         case "1":
-            nomeBairro = 'Santo Amaro';
+            nomeBairro = 'Em Obras';
             valor = 35;
             icone = <FaCity className='icon' size={42} />;
             break;
         case "2":
-            nomeBairro = 'Santo Antônio';
+            nomeBairro = 'Abandonado';
             valor = 75;
             icone = <FaBuilding className='icon' size={42} />;
             break;
         case "3":
-            nomeBairro = 'São José';
+            nomeBairro = 'Disponível';
             valor = 80;
             icone = <FaLandmark className='icon' size={42} />;
             break;

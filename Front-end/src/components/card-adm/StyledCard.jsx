@@ -57,17 +57,27 @@ export const Box = styled.div`
     }
       
     @media (max-width: 991px){
-       width: 100%;
+        margin-left: 0.2rem;
+        margin-top: 10%;
+        width: 80%;
+       height: 80%;
          h1{
-         font-size: 22px;
+         font-size: 12px;
+         margin-top: -10px;
+         
          }
 
          p{
-            font-size: 40px;
+            font-size: 20px;
+            margin-left: -30px;
+            margin-top: -20px;
          }
          .icon {
-          display: none;
+          display:relative;
+          margin-left: 30px;
         }
+        
+        
     }
    
 
