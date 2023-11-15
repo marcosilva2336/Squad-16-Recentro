@@ -13,22 +13,28 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
   z-index: 2;
-  
+    
+  @media screen and (max-width:1300px){
+    width: 1150px;
+    margin: 70px auto 10px;
+  }
+
   @media screen and (max-width:768px){
-    width: 600px;
+    width: 670px;
     margin: 100px auto 10px;
   }
 
   @media screen and (max-width:425px){
     width: 418px;
     margin: 100px auto 10px;
-    padding: 20px;
+    height: 650px;
+    padding: 15px;
   }
 
   @media screen and (max-width:375px){
-    width: 350px;
+    width: 360px;
     margin: 100px auto 5px;
-    padding: 20px;
+    padding: 1px;
   }
 `;
 
@@ -37,7 +43,7 @@ export const ProgressBar = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   margin-left: 250px;
   margin-right: 250px;
 
@@ -50,12 +56,12 @@ export const ProgressBar = styled.div`
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
   }
   @media screen and (max-width:375px){
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 56px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 70px;
   }
 
   &::after {
@@ -111,7 +117,7 @@ export const FormFields = styled.div`
 
 export const FormField = styled.div`
   flex: 0 0 calc(33.333% - 30px);
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   box-sizing: border-box;
 
   input {
@@ -123,12 +129,16 @@ export const FormField = styled.div`
   }
 
 
+
   @media screen and (max-width:768px){
    flex: 0 0 calc(36% - 30px);
+   label{
+    font-size: 11.5px;
+   }
   }
 
-  @media screen and (max-width:375px){
-   flex: 0 0 calc(35% - 10px);
+  @media screen and (max-width: 425px) {
+    flex: 0 0 calc(50% - 20px);
   }
 `;
 
@@ -157,14 +167,29 @@ export const ArrowIcon = styled(FaArrowLeft)`
   z-index: 3;
 `;
 
+export const SearchInput = styled.input`
+  width: 300px;
+  padding: 10px 40px 10px 20px;
+  border:none;
+  border-radius: 7px;
+  background-color:  #fff;
+  color:#fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  @media screen and (max-width:768px){
+  width: 140px;
+margin-bottom: 10px;
+  }
+`;
 
 export const Title2 = styled.h2`
   text-align: center;
+  margin-bottom: 20px;
   
   @media screen and (max-width:768px){
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   }
   @media screen and (max-width:375px){
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   }
 `;

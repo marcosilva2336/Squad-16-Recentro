@@ -9,52 +9,131 @@ import {
   TableCell,  
   SearchInput, 
   Title, 
-  ShowMoreButton 
+  ColumnRangeButton ,
+  ButtonContainer
 } from './StyledTabela';
 
 const Tabela = ({ darkMode }) => {
-    const [showAll, setShowAll] = useState(false);
+  const [colRange, setColRange] = useState(0);
+    
 
-    // Gere dados fictícios com múltiplas colunas
-    const fakeData = Array.from({ length: 10 }, (_, index) => {
-      return Array.from({ length: 43 }, (_, colIndex) => `Dado ${colIndex + 1}-${index + 1}`);
-    });
+    const columnNames = [
+      "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
+      "Nome do Edifício", "Nº de Pavimentos em Uso", "Disponibilidade", "Atividade de Funcionamento", "Grau de Risco", "Laudo", "Acessibilidade",
+      "Pichação", "Observações", "Proprietário Localizado", "Investimento", "Qual Investimento", "Tributação", "Autorização de Informação",
+      "Proprietário Cartório", "Proprietário Campo", "Contato Proprietário", "Coincidência Proprietário", "Uso do Imóvel",
+      "Valor do Aluguel", "Valor de Venda", "Latitude", "Longitude", "RGI", "Planta", "Planta Regional", "Judicialização",
+      "Descrição da Judicialização", "Observações", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo"
+    ];
+    
 
-    // Ajuste os dados exibidos com base no estado 'showAll'
-    const displayedData = showAll ? fakeData : fakeData.map(row => row.slice(0, 10));
+    const generateFakeData = () => {
+      return Array.from({ length: 10 }, (_, rowIndex) => {
+        return columnNames.map((colName, colIndex) => {
+          switch (colName) {
+            case "ID":
+              return rowIndex + 1;
+            case "Número":
+            case "Latitude":
+            case "Longitude":
+              return Math.random().toFixed(2);
+            case "Área Total":
+            case "Valor do Aluguel":
+            case "Valor de Venda":
+              return `${Math.floor(Math.random() * 1000)} m²`;
+            case "Rua":
+              return `Rua ${rowIndex + 1}`;
+            case "Situação":
+              return ["Disponível", "Abandonado", "Em Obra"][rowIndex % 3];
+            case "Bairro":
+              return ["Centro", "Santo Amaro", "Boa Vista"][rowIndex % 3];
+            case "DSQ":
+            case "DSQFL":
+              return `DSQ-${Math.floor(Math.random() * 100)}`;
+            case "Tipo de Empreendimento":
+              return ["Residencial", "Comercial", "Misto"][rowIndex % 3];
+            case "Restaurantes e Cafés":
+              return Math.floor(Math.random() * 20);
+            case "Nome do Edifício":
+              return `Edifício ${rowIndex + 1}`;
+            case "Nº de Pavimentos em Uso":
+              return Math.floor(Math.random() * 20) + 1;
+            case "Disponibilidade":
+              return ["Alugado", "Vago", "Reservado"][rowIndex % 3];
+            case "Atividade de Funcionamento":
+              return ["Funcionando", "Fechado", "Em Manutenção"][rowIndex % 3];
+            case "Grau de Risco":
+              return ["Baixo", "Médio", "Alto"][rowIndex % 3];
+            case "Laudo":
+              return ["Aprovado", "Reprovado", "Pendente"][rowIndex % 3];
+            case "Acessibilidade":
+              return ["Acessível", "Não Acessível"][rowIndex % 2];
+            case "Pichação":
+              return ["Sim", "Não"][rowIndex % 2];
+            case "Observações":
+              return `Observação ${rowIndex + 1}`;
+            case "Proprietário Localizado":
+              return ["Sim", "Não"][rowIndex % 2];
+            // Continue adicionando lógica para outros tipos de dados conforme necessário
+            default:
+              return `Dado ${colIndex + 1}-${rowIndex + 1}`;
+          }
+        });
+      });
+    };
+    
 
-    return (
-      <>
-        <Title darkMode={darkMode}>Registro de Imóveis</Title>
-        <SearchInput darkMode={darkMode} placeholder="🔍 Pesquisar..." />
-        <ScrollableTableContainer>
-          <TableContainer darkMode={darkMode}>
-            <table> 
-              <TableHeader darkMode={darkMode}>
-                <tr> 
-                  {Array.from({ length: showAll ? 43 : 10 }, (_, index) => (
-                    <TableCell darkMode={darkMode} key={index}>Coluna {index + 1}</TableCell>
-                  ))}
-                </tr>
-              </TableHeader>
-              <TableBody darkMode={darkMode}>
-                {displayedData.map((row, rowIndex) => (
-                  <TableRow key={rowIndex} darkMode={darkMode}>
-                    {row.map((cell, cellIndex) => (
-                      <TableCell darkMode={darkMode} key={cellIndex}>{cell}</TableCell>
-                    ))}
-                  </TableRow>
+    const fakeData = generateFakeData();
+
+    // Função para mudar o intervalo de colunas
+    const handleColRangeChange = (rangeNumber) => {
+      setColRange(rangeNumber);
+  };
+
+  // Cálculo dos índices das colunas com base no número clicado
+  const startColIndex = colRange * 10;
+  const endColIndex = Math.min(startColIndex + 10, columnNames.length);
+
+  // Filtra os nomes das colunas e os dados com base no intervalo selecionado
+  const displayedColumnNames = columnNames.slice(startColIndex, endColIndex);
+  const displayedData = fakeData.map(row => row.slice(startColIndex, endColIndex));
+
+  return (
+    <>
+      <Title darkMode={darkMode}>Registro de Imóveis</Title>
+      <SearchInput darkMode={darkMode} placeholder="🔍 Pesquisar..." />
+      <ScrollableTableContainer>
+        <TableContainer darkMode={darkMode}>
+          <table>
+            <TableHeader darkMode={darkMode}>
+              <tr>
+                {displayedColumnNames.map((name, index) => (
+                  <TableCell darkMode={darkMode} key={index}>{name}</TableCell>
                 ))}
-              </TableBody>
-            </table>
-          </TableContainer>
-        </ScrollableTableContainer>
-        <ShowMoreButton darkMode={darkMode} onClick={() => setShowAll(!showAll)}>
-          {showAll ? 'Ver Menos' : 'Ver Mais'}
-        </ShowMoreButton>
-        
-      </>
-    );
+              </tr>
+            </TableHeader>
+            <TableBody darkMode={darkMode}>
+              {displayedData.map((row, rowIndex) => (
+                <TableRow key={rowIndex} darkMode={darkMode}>
+                  {row.map((cell, cellIndex) => (
+                    <TableCell darkMode={darkMode} key={cellIndex}>{cell}</TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </table>
+        </TableContainer>
+      </ScrollableTableContainer>
+      <ButtonContainer>
+      {[1, 2, 3, 4, 5].map(rangeNumber => (
+        <ColumnRangeButton  darkMode={darkMode}  key={rangeNumber} onClick={() => handleColRangeChange(rangeNumber - 1)}>
+          {rangeNumber}
+        </ColumnRangeButton >
+      ))}
+        </ButtonContainer>
+   
+    </>
+  );
 };
 
 export default Tabela;

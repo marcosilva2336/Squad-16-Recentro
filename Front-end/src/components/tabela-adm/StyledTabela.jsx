@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const ScrollableTableContainer = styled.div`
-  overflow-x: auto;
-  max-width: 100%;
-  
+overflow-x: auto;
+  width: 100%;
 `;
 
 export const TableContainer = styled.div`
@@ -27,7 +26,6 @@ export const Table = styled.table`
 
 export const TableHeader = styled.thead`
   background: #FF6900; 
-  padding: 10px;
   font-weight: 600;
   text-shadow: ${props => props.darkMode ? '1px 1px 4px #000' : '1px 1px 4px #222'}; 
   color: #fff;
@@ -48,10 +46,10 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
-  padding: 10px;
   text-align: left;
   border-bottom: 2px solid #ccc;
-  padding: 10px 20px;
+  padding: 10px;
+  font-size: 12px;
 `;
 
 
@@ -75,20 +73,35 @@ export const Title = styled.h1`
   font-weight: 600;
 `;
 
-export const ShowMoreButton = styled.button`
- display: block;
-  width: max-content;
-  padding: 10px 20px;
-  margin: 10px 20px;
-  background: transparent;
-  padding: 10px 20px;
-  border: 2px dashed #f09611;
-  box-shadow: ${props => props.darkMode ? '2px 2px 4px rgba(255, 255, 255, 0.2)' : '2px 2px 4px rgba(0, 0, 0, 0.2)'};
-  border-radius: 6px;
-  text-decoration: none;
-  color: ${props => props.darkMode ? '#fff' : '#000'};
 
-  &:hover {
-    background-color: ${props => props.darkMode ? '#f17f21' : '#f09611'};
-  }
+
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 `;
+
+
+export const ColumnRangeButton = styled.button`
+ width: 40px;
+ height: 40px;
+ margin: 10px;
+ background: transparent;
+ border: 2px dashed #f09611;
+ border-radius: 50%; // Faz o botão ser um círculo
+ text-decoration: none;
+ color: ${props => props.darkMode ? '#fff' : '#000'};
+ box-shadow: ${props => props.darkMode ? '2px 2px 4px rgba(255, 255, 255, 0.2)' : '2px 2px 4px rgba(0, 0, 0, 0.2)'};
+
+ &:hover {
+   background-color: ${props => props.darkMode ? '#f17f21' : '#f09611'};
+ }
+
+ &.active {
+   background-color: #f09611; // Cor de fundo quando ativo
+   color: #fff;
+ }
+`;
+

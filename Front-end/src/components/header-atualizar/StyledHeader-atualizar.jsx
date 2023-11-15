@@ -28,9 +28,8 @@ export const HeaderImage = styled.img`
 `;
 
 export const Title = styled.h2`
+   color: #333; 
   text-align: center;
-  text-shadow: 1px 1px 5px #000;
-
   @media screen and (max-width:425px){
    font-size:15px;
   }
