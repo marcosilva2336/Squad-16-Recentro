@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ScrollableTableContainer,
   TableContainer,
@@ -17,7 +17,8 @@ import {
 
 const Tabela = ({ darkMode }) => {
   const [colRange, setColRange] = useState(0);
-
+  const [fakeData, setFakeData] = useState([]);
+  const [activeButton, setActiveButton] = useState(1); 
 
   const columnNames = [
     "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
@@ -28,9 +29,10 @@ const Tabela = ({ darkMode }) => {
     "Descrição da Judicialização", "Observações", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo"
   ];
 
-
-  const generateFakeData = () => {
-    return Array.from({ length: 10 }, (_, rowIndex) => {
+  // Função que gerar os dados lá
+  const generateFakeData = (startId, endId) => {
+    return Array.from({ length: endId - startId + 1 }, (_, index) => {
+      const rowIndex = startId + index - 1;
       return columnNames.map((colName, colIndex) => {
         switch (colName) {
           case "ID":
@@ -96,9 +98,9 @@ const Tabela = ({ darkMode }) => {
           case "Valor de Venda":
             return `R$ ${Math.floor(Math.random() * 10000)}`;
           case "Latitude":
-            return (Math.random() * 180 - 90).toFixed(6); 
+            return (Math.random() * 180 - 90).toFixed(6);
           case "Longitude":
-            return (Math.random() * 360 - 180).toFixed(6); 
+            return (Math.random() * 360 - 180).toFixed(6);
           case "RGI":
             return `RGI-${Math.floor(Math.random() * 10000)}`;
           case "Planta":
@@ -110,24 +112,31 @@ const Tabela = ({ darkMode }) => {
           case "Descrição da Judicialização":
             return `Descrição ${rowIndex + 1}`;
           case "Observações":
-           
+
             return `Outra observação ${rowIndex + 1}`;
           case "Processos Abertos Desde 2018":
             return Math.floor(Math.random() * 10);
-  
+
           default:
             return `Dado ${colIndex + 1}-${rowIndex + 1}`;
         }
       });
     });
   };
-  const fakeData = generateFakeData();
+
 
   // Função para mudar o intervalo de colunas
-  const handleColRangeChange = (rangeNumber) => {
-    setColRange(rangeNumber);
-  };
+  useEffect(() => {
+    setFakeData(generateFakeData(1, 10)); // Dados iniciais
+  }, []);
 
+  const handleColRangeChange = (rangeNumber) => {
+    setActiveButton(rangeNumber); 
+    const startId = rangeNumber * 10 - 9;
+    const endId = startId + 9;
+    setFakeData(generateFakeData(startId, endId));
+  };
+  // Mesma coisa da de cima. Essa é das abas e a outra dos botões
   const handleTabChange = (rangeNumber) => {
     setColRange(rangeNumber);
   };
@@ -184,9 +193,14 @@ const Tabela = ({ darkMode }) => {
       </ScrollableTableContainer>
       <ButtonContainer>
         {[1, 2, 3, 4, 5].map(rangeNumber => (
-          <ColumnRangeButton darkMode={darkMode} key={rangeNumber} onClick={() => handleColRangeChange(rangeNumber - 1)}>
+          <ColumnRangeButton
+            darkMode={darkMode}
+            key={rangeNumber}
+            isActive={activeButton === rangeNumber}
+            onClick={() => handleColRangeChange(rangeNumber)}
+          >
             {rangeNumber}
-          </ColumnRangeButton >
+          </ColumnRangeButton>
         ))}
       </ButtonContainer>
 

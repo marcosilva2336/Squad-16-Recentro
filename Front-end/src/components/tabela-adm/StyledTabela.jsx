@@ -90,8 +90,9 @@ export const ColumnRangeButton = styled.button`
  margin: 10px;
  background: transparent;
  border: 2px dashed #f09611;
- border-radius: 50%; // Faz o botão ser um círculo
+ border-radius: 50%;
  text-decoration: none;
+ background: ${props => props.isActive ? '#ff6900' : 'transparent'}; // Muda a cor de fundo se ativo
  color: ${props => props.darkMode ? '#fff' : '#000'};
  box-shadow: ${props => props.darkMode ? '2px 2px 4px rgba(255, 255, 255, 0.2)' : '2px 2px 4px rgba(0, 0, 0, 0.2)'};
 
@@ -99,10 +100,6 @@ export const ColumnRangeButton = styled.button`
    background-color: ${props => props.darkMode ? '#f17f21' : '#f09611'};
  }
 
- &.active {
-   background-color: #f09611; // Cor de fundo quando ativo
-   color: #fff;
- }
 `;
 export const SearchAndTabContainer = styled.div`
   display: flex;
@@ -113,17 +110,17 @@ export const SearchAndTabContainer = styled.div`
 export const TabContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start; // Garante que as abas fiquem juntas e alinhadas à esquerda
+  justify-content: flex-start; 
   margin-right: 20px;
 `;
 
 
 export const Tab = styled.button`
-  margin-left: 1px; // Reduzindo ainda mais a margem para as abas ficarem mais juntas
+  margin-left: 1px; 
   margin-top: 18px;
   padding: 10px 20px;
   border: none;
-  background-color: ${props => props.isActive ? '#ff6900' : (props.darkMode ? '#303840' : '#fff')}; // Uso do darkMode para alterar o fundo
+  background-color: ${props => props.isActive ? '#ff6900' : (props.darkMode ? '#303840' : '#fff')}; 
   color: ${props => props.isActive ? '#fff' : (props.darkMode ? '#fff' : '#333')};
   border-bottom: ${props => props.isActive ? 'none' : '2px solid #ff6900'};
   border-radius: 5px 5px 0 0;
