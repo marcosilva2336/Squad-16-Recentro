@@ -104,4 +104,38 @@ export const ColumnRangeButton = styled.button`
    color: #fff;
  }
 `;
+export const SearchAndTabContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const TabContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; // Garante que as abas fiquem juntas e alinhadas à esquerda
+  margin-right: 20px;
+`;
+
+
+export const Tab = styled.button`
+  margin-left: 1px; // Reduzindo ainda mais a margem para as abas ficarem mais juntas
+  margin-top: 18px;
+  padding: 10px 20px;
+  border: none;
+  background-color: ${props => props.isActive ? '#ff6900' : (props.darkMode ? '#303840' : '#fff')}; // Uso do darkMode para alterar o fundo
+  color: ${props => props.isActive ? '#fff' : (props.darkMode ? '#fff' : '#333')};
+  border-bottom: ${props => props.isActive ? 'none' : '2px solid #ff6900'};
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  z-index: ${props => props.isActive ? 1 : 0};
+  transform: ${props => props.isActive ? 'translateY(-5px)' : 'none'};
+  box-shadow: ${props => props.isActive ? '0px 2px 4px rgba(0, 0, 0, 0.25)' : 'none'};
+
+  &:hover {
+    background-color: #ff6900;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
 
