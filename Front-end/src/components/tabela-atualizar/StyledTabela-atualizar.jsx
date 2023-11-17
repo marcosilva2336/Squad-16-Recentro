@@ -165,6 +165,7 @@ export const ArrowIcon = styled(FaArrowLeft)`
   transform: translateX(-50%);
   font-size: 24px;
   z-index: 3;
+  cursor: pointer;
 `;
 
 export const SearchInput = styled.input`

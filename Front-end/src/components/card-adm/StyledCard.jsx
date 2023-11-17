@@ -92,12 +92,17 @@ export const Box = styled.div`
         }
     }
     @media (max-width: 624px){
-        margin-top: 3rem;
+        height: 100px;
+        margin-top: 2rem;
         .icon {
             display: none;
         }
         h1{
-            font-size: 15px;
+            font-size: 12px;
+            margin-right: 12px;
+        }
+        p{
+            font-size: 20px;
         }
     }
     
