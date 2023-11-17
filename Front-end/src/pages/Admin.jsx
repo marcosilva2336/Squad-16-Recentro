@@ -20,6 +20,15 @@ const Content = styled.div`
   width: 100vw;
   height: 100vh;
   transition: background-color 0.3s, color 0.3s; 
+  
+  @media screen and (max-width: 425px) {
+    height: 110vh;
+  }
+
+  @media screen and (max-width: 375px) {
+    height: 110vh;
+    width: 110vw;
+  }
 `;
 
 function Admin() {

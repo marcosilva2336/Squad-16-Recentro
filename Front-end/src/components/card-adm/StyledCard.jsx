@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
     display: flex;
-    /* background-color: aqua; */
+    height: 168px;
     width: 100%;
     margin-left: 1%; 
     margin-top: 2rem;
@@ -12,6 +12,7 @@ export const StyledContainer = styled.div`
     /* flex-direction: row; */
     @media (max-width: 425px) {
         width: 420px;
+        margin-left: 5%;
     }
 
     @media (max-width: 375px) {
@@ -94,7 +95,7 @@ export const Box = styled.div`
     }
     @media (max-width: 624px){
         height: 100px;
-        margin-top: 2rem;
+        margin-top: 1rem;
         .icon {
             display: none;
         }

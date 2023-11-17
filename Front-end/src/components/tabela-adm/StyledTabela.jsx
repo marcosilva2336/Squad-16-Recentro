@@ -79,6 +79,12 @@ export const SearchInput = styled.input`
 
   }
 
+  @media screen and (max-width: 425px) {
+    width: 180px;
+    padding: 7px;
+   margin-left: 10px;
+  }
+
   @media screen and (max-width: 375px) {
     width: 150px;
     padding: 5px;
@@ -98,7 +104,7 @@ export const Title = styled.h1`
 
   @media screen and (max-width: 375px) {
     font-size: 18px;
-    margin-top: 45px;
+    margin-top: 55px;
   }
 `;
 
@@ -166,8 +172,12 @@ export const TabContainer = styled.div`
     margin: 0 50px;
   }
 
+  @media screen and (max-width: 425px) {
+    margin: 0 38px;
+  }
+
   @media screen and (max-width: 375px) {
-    margin: 10px;
+    margin-left: 5px;
   }
 `;
 
@@ -194,8 +204,7 @@ export const Tab = styled.button`
   @media screen and (max-width: 768px) {
     padding: 5px 10px;
   }
-
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     padding: 7px;
     font-size: 10px;
     
