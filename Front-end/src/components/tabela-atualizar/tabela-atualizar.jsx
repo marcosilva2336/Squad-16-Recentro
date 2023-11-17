@@ -11,8 +11,10 @@ import {
   Title2
 } from './StyledTabela-atualizar';
 import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const AtualizarImovelContainer = () => {
+  const navigate = useNavigate();
   const totalSteps = 7;
   const fieldsPerStep = 6;
   const [currentStepIndex, setCurrentStepIndex] = useState(0);

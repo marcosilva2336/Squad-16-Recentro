@@ -9,6 +9,7 @@ import {
   Button,
   Title2
 } from './StyledTabela-adicionar';
+import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa';
 
 const AdicionarImovelContainer = () => {
@@ -16,6 +17,7 @@ const AdicionarImovelContainer = () => {
   const fieldsPerStep = 9;
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [fieldValues, setFieldValues] = useState({});
+  const navigate = useNavigate();
 
   const handleInputChange = (fieldName, value) => {
     setFieldValues({ ...fieldValues, [fieldName]: value });
@@ -32,6 +34,8 @@ const AdicionarImovelContainer = () => {
   const prevStep = () => {
     if (currentStepIndex > 0) {
       setCurrentStepIndex(currentStepIndex - 1);
+    } else if (currentStepIndex <= 0){
+      navigate("/admin");
     }
   };
 
