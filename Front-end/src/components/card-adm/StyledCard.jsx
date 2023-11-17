@@ -3,18 +3,19 @@ import styled from "styled-components";
 export const StyledContainer = styled.div`
     display: flex;
     /* background-color: aqua; */
-    height: 168px;
     width: 100%;
-    /* margin-left: 2%; */
+    margin-left: 1%; 
     margin-top: 2rem;
     justify-content:center;
-    /* align-items: center; */
+    align-items: center; 
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
+    @media (max-width: 425px) {
+        width: 420px;
+    }
 
-    @media (max-width: 991px){
-        margin-left: 2%;
-        // padding: 20px;
+    @media (max-width: 375px) {
+        width: 400px;
     }
 `
 export const Box = styled.div`
@@ -103,6 +104,16 @@ export const Box = styled.div`
         }
         p{
             font-size: 20px;
+        }
+    }
+
+    @media (max-width: 375px){
+       height: 90px;
+        h1{
+            font-size: 10px;
+        }
+        p{
+            font-size: 18px;
         }
     }
     

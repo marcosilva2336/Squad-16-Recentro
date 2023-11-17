@@ -174,7 +174,7 @@ export const SearchInput = styled.input`
   border:none;
   border-radius: 7px;
   background-color:  #fff;
-  color:#fff;
+  font-weight: 500;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   @media screen and (max-width:768px){
