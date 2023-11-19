@@ -12,10 +12,10 @@ export const StyledBoxMap = styled.section`
 
     .container {
     height: 57.5rem;
-    width: 90vw;
-
+    width: 95vw;
+    }
     .boxPesquisa {
-        width: 90vw;
+        width: 95vw;
         display: flex;
         margin-top: 30px;
         position: absolute;
@@ -33,7 +33,7 @@ export const StyledBoxMap = styled.section`
         min-height: 25vh;
         margin-top: -0.8rem;
         padding: 2.5rem;
-        width: 90vw;
+        width: 95vw;
         background-color: #FD832E;
         height: 12rem;
         border-radius: 0px 0px 20px 20px;

@@ -11,8 +11,10 @@ import {
   Title2
 } from './StyledTabela-atualizar';
 import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const AtualizarImovelContainer = () => {
+  const navigate = useNavigate();
   const totalSteps = 7;
   const fieldsPerStep = 6;
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -42,9 +44,17 @@ const AtualizarImovelContainer = () => {
   const prevStep = () => {
     if (currentStepIndex > 0) {
       setCurrentStepIndex(currentStepIndex - 1);
+    } else if (currentStepIndex <= 0){
+      navigate("/admin");
     }
   };
 
+  const resetAndGoToFirstStep = () => {
+    // Redefine os valores dos campos
+    setFieldValues({});
+    // Volta para o primeiro passo
+    setCurrentStepIndex(0);
+  };
   const generateFormFields = () => {
     const fields = [];
     const startIndex = currentStepIndex * fieldsPerStep;
@@ -85,9 +95,8 @@ const AtualizarImovelContainer = () => {
       <FormFields>
         {generateFormFields()}
       </FormFields>
-
       <FormActions>
-        <Button className="cancel" onClick={() => setCurrentStepIndex(0)}>Cancelar</Button>
+        <Button className="cancel" onClick={resetAndGoToFirstStep}>Redefinir</Button>
         <Button onClick={nextStep}>{currentStepIndex === totalSteps - 1 ? 'Finalizar' : 'Próximo'}</Button>
       </FormActions>
     </Container>

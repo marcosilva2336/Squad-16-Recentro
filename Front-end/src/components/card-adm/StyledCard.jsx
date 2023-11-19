@@ -2,19 +2,21 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
     display: flex;
-    /* background-color: aqua; */
     height: 168px;
     width: 100%;
-    /* margin-left: 2%; */
+    margin-left: 1%; 
     margin-top: 2rem;
     justify-content:center;
-    /* align-items: center; */
+    align-items: center; 
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
+    @media (max-width: 425px) {
+        width: 420px;
+        margin-left: 5%;
+    }
 
-    @media (max-width: 991px){
-        margin-left: 2%;
-        // padding: 20px;
+    @media (max-width: 375px) {
+        width: 400px;
     }
 `
 export const Box = styled.div`
@@ -92,12 +94,27 @@ export const Box = styled.div`
         }
     }
     @media (max-width: 624px){
-        margin-top: 3rem;
+        height: 100px;
+        margin-top: 1rem;
         .icon {
             display: none;
         }
         h1{
-            font-size: 15px;
+            font-size: 12px;
+            margin-right: 12px;
+        }
+        p{
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 375px){
+       height: 90px;
+        h1{
+            font-size: 10px;
+        }
+        p{
+            font-size: 18px;
         }
     }
     
