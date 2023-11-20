@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Container,
   ProgressBar,
@@ -9,8 +10,8 @@ import {
   Button,
   Title2
 } from './StyledTabela-adicionar';
-import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const AdicionarImovelContainer = () => {
   const totalSteps = 6;
@@ -23,11 +24,29 @@ const AdicionarImovelContainer = () => {
     setFieldValues({ ...fieldValues, [fieldName]: value });
   };
 
+  const adicionarImovel = async () => {
+    try {
+      const response = await axios.post('API/imoveis', fieldValues);
+      console.log(response.data);
+      alert('Imóvel adicionado com sucesso!');
+      navigate("/admin"); 
+    } catch (e) {
+      if (e.response) {
+        console.error(`Erro ao adicionar imóvel: ${e.response.status}`);
+      } else if (e.request) {
+        console.error("A requisição foi feita mas não houve resposta: ", e.request);
+      } else {
+        console.error("Erro: ", e.message);
+      }
+    }
+  };
+  
+
   const nextStep = () => {
     if (currentStepIndex < totalSteps - 1) {
       setCurrentStepIndex(currentStepIndex + 1);
     } else {
-      alert('Imóvel Atualizado!!!');
+      adicionarImovel();
     }
   };
 

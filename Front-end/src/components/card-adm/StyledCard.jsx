@@ -60,7 +60,7 @@ export const Box = styled.div`
     @media (max-width: 1400px) {
         width: 291px;
          .icon {
-             /* font-size: 15px; */
+             left: 200px;
          }
     }
       
