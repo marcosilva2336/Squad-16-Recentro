@@ -12,6 +12,7 @@ export const Header = styled.div`
 export const HeaderImage = styled.img`
   position: absolute;
   top: 15%;
+  border-radius: 10px;
   ${props => props.right ? 'right: 10px;' : 'left: 10px;'}
   transform: translateY(-50%);
   width: ${props => props.right ? '150px' : '190px'};

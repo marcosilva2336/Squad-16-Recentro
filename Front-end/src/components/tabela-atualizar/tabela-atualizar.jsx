@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Container,
   ProgressBar,
@@ -11,12 +12,15 @@ import {
   Title2
 } from './StyledTabela-atualizar';
 import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const AtualizarImovelContainer = () => {
+  const navigate = useNavigate();
   const totalSteps = 7;
   const fieldsPerStep = 6;
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [fieldValues, setFieldValues] = useState({});
+  const [searchId, setSearchId] = useState('');
 
   const fieldNames = [
     "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
@@ -27,22 +31,60 @@ const AtualizarImovelContainer = () => {
     "Descrição da Judicialização", "Observações", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo"
   ];
 
+  useEffect(() => {
+    const buscarImovelPorId = async () => {
+      if (!searchId) return;
+
+      try {
+        const response = await axios.get(`API/imoveis/${searchId}`);
+        setFieldValues(response.data);
+      } catch (e) {
+        console.error("Erro ao buscar imóvel: ", e);
+      }
+    };
+
+    buscarImovelPorId();
+  }, [searchId]);
+
   const handleInputChange = (fieldName, value) => {
     setFieldValues({ ...fieldValues, [fieldName]: value });
+  };
+
+  const atualizarImovel = async () => {
+    try {
+      const response = await axios.put(`API/imoveis/${fieldValues.ID}`, fieldValues);
+      console.log(response.data); 
+      alert('Imóvel atualizado com sucesso!');
+    } catch (e) {
+      if (e.response) {
+        console.error(`Erro ao atualizar imóvel: ${e.response.status}`);
+      } else if (e.request) {
+        console.error("A requisição foi feita mas não houve resposta: ", e.request);
+      } else {
+        console.error("Erro: ", e.message);
+      }
+    }
   };
 
   const nextStep = () => {
     if (currentStepIndex < totalSteps - 1) {
       setCurrentStepIndex(currentStepIndex + 1);
     } else {
-      alert('Imóvel Atualizado!!!');
+      atualizarImovel();
     }
   };
 
   const prevStep = () => {
     if (currentStepIndex > 0) {
       setCurrentStepIndex(currentStepIndex - 1);
+    } else if (currentStepIndex <= 0) {
+      navigate("/admin");
     }
+  };
+
+  const resetAndGoToFirstStep = () => {
+    setFieldValues({});
+    setCurrentStepIndex(0);
   };
 
   const generateFormFields = () => {
@@ -51,7 +93,6 @@ const AtualizarImovelContainer = () => {
     const endIndex = startIndex + fieldsPerStep;
 
     for (let i = startIndex; i < endIndex && i < fieldNames.length; i++) {
-      const isIdField = fieldNames[i] === "ID";
       fields.push(
         <FormField key={fieldNames[i]}>
           <label htmlFor={`field${i}`}>{fieldNames[i]}</label>
@@ -61,14 +102,13 @@ const AtualizarImovelContainer = () => {
             placeholder={fieldNames[i]}
             value={fieldValues[fieldNames[i]] || ''}
             onChange={(e) => handleInputChange(fieldNames[i], e.target.value)}
-            disabled={isIdField}
+            disabled={fieldNames[i] === "ID"}
           />
         </FormField>
       );
     }
     return fields;
   };
-
 
   return (
     <Container>
@@ -79,15 +119,18 @@ const AtualizarImovelContainer = () => {
         ))}
       </ProgressBar>
       {currentStepIndex === 0 && (
-        <SearchInput placeholder="🔍 Pesquisar por ID..." />
+        <SearchInput
+          placeholder="🔍 Pesquisar por ID..."
+          value={searchId}
+          onChange={(e) => setSearchId(e.target.value)}
+        />
       )}
       <Title2>Informações</Title2>
       <FormFields>
         {generateFormFields()}
       </FormFields>
-
       <FormActions>
-        <Button className="cancel" onClick={() => setCurrentStepIndex(0)}>Cancelar</Button>
+        <Button className="cancel" onClick={resetAndGoToFirstStep}>Redefinir</Button>
         <Button onClick={nextStep}>{currentStepIndex === totalSteps - 1 ? 'Finalizar' : 'Próximo'}</Button>
       </FormActions>
     </Container>
