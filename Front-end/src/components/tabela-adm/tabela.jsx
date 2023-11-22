@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaTimes } from 'react-icons/fa';
 import {
   ScrollableTableContainer,
   TableContainer,
@@ -6,19 +7,27 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  SearchInput,
   Title,
+  Title2,
   TabContainer,
   Tab,
   ButtonContainer,
   ColumnRangeButton,
   SearchAndTabContainer,
+  ModalContainer,
+  PopupButton,
+  ModalContent,
+  ButtonClose,
+  ButtonCloseContainer
 } from './StyledTabela';
 
 const Tabela = ({ darkMode }) => {
   const [colRange, setColRange] = useState(0);
   const [fakeData, setFakeData] = useState([]);
-  const [activeButton, setActiveButton] = useState(1); 
+  const [activeButton, setActiveButton] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   const columnNames = [
     "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
@@ -125,26 +134,34 @@ const Tabela = ({ darkMode }) => {
   };
 
 
-  // Função para mudar o intervalo de colunas
   useEffect(() => {
-    setFakeData(generateFakeData(1, 10)); // Dados iniciais
+    setFakeData(generateFakeData(1, 10));
   }, []);
 
   const handleColRangeChange = (rangeNumber) => {
-    setActiveButton(rangeNumber); 
+    setActiveButton(rangeNumber);
     const startId = rangeNumber * 10 - 9;
     const endId = startId + 9;
     setFakeData(generateFakeData(startId, endId));
   };
-  // Mesma coisa da de cima. Essa é das abas e a outra dos botões
+
   const handleTabChange = (rangeNumber) => {
     setColRange(rangeNumber);
   };
-  // Cálculo dos índices das colunas com base no número clicado
+  const handleSearchInModal = (column) => {
+    setSearchTerm(column);
+    // Remove the line below that closes the modal on checkbox change
+    // setIsModalOpen(false);
+  };
+
+
+  const toggleModal = () => {
+    setIsModalOpen((prevIsOpen) => !prevIsOpen);
+  };
+
   const startColIndex = colRange * 10;
   const endColIndex = Math.min(startColIndex + 10, columnNames.length);
 
-  // Filtra os nomes das colunas e os dados com base no intervalo selecionado
   const displayedColumnNames = columnNames.slice(startColIndex, endColIndex);
   const displayedData = fakeData.map(row => row.slice(startColIndex, endColIndex));
 
@@ -153,8 +170,7 @@ const Tabela = ({ darkMode }) => {
       <Title darkMode={darkMode}>Registro de Imóveis</Title>
 
       <SearchAndTabContainer>
-
-        <SearchInput darkMode={darkMode} placeholder="🔍 Pesquisar..." />
+        <PopupButton onClick={toggleModal}>Filtros</PopupButton>
 
         <TabContainer darkMode={darkMode}>
           {[1, 2, 3, 4, 5].map(rangeNumber => (
@@ -169,6 +185,25 @@ const Tabela = ({ darkMode }) => {
           ))}
         </TabContainer>
       </SearchAndTabContainer>
+
+
+      <ModalContainer darkMode={darkMode} isOpen={isModalOpen}>
+        <Title2 darkMode={darkMode}>Filtros</Title2>
+        <ModalContent darkMode={darkMode}>
+          <input type="text" placeholder="Search..." darkMode={darkMode} />
+          {columnNames.map((colName, index) => (
+            <label key={index} darkMode={darkMode}>
+              <input darkMode={darkMode} type="checkbox" onChange={() => handleSearchInModal(colName)} /> {colName}
+            </label>
+          ))}
+        </ModalContent>
+        <ButtonCloseContainer darkMode={darkMode} >
+        <ButtonClose darkMode={darkMode} onClick={toggleModal}>
+          <FaTimes />
+        </ButtonClose>
+        </ButtonCloseContainer>
+      </ModalContainer >
+
       <ScrollableTableContainer>
         <TableContainer darkMode={darkMode}>
           <table>
@@ -203,7 +238,6 @@ const Tabela = ({ darkMode }) => {
           </ColumnRangeButton>
         ))}
       </ButtonContainer>
-
     </>
   );
 };
