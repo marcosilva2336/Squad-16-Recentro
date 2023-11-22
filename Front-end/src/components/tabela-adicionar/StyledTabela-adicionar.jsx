@@ -36,7 +36,7 @@ export const ProgressBar = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   margin-left: 250px;
   margin-right: 250px;
 
@@ -158,5 +158,6 @@ export const ArrowIcon = styled(FaArrowLeft)`
 
 
 export const Title2 = styled.h2`
-  text-align: center;
+    text-align: center;
+  margin-bottom: 40px;
 `;
