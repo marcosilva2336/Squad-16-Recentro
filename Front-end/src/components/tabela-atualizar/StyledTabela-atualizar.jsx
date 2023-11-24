@@ -4,9 +4,9 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 
 export const Container = styled.div`
-  max-width: 1300px;
+ max-width: 1400px;
   height: 550px;
-  margin: 120px auto 20px;
+  margin: -90px auto 20px;
   padding: 50px;
   background-color: #fff;
   border-radius: 8px;
@@ -16,25 +16,23 @@ export const Container = styled.div`
     
   @media screen and (max-width:1300px){
     width: 1150px;
-    margin: 70px auto 10px;
   }
 
   @media screen and (max-width:768px){
     width: 670px;
-    margin: 100px auto 10px;
+    margin: -45px auto 10px;
   }
 
   @media screen and (max-width:425px){
     width: 418px;
-    margin: 100px auto 10px;
+    margin: -45px auto 5px;
     height: 650px;
     padding: 15px;
   }
 
   @media screen and (max-width:375px){
     width: 360px;
-    margin: 100px auto 5px;
-    padding: 1px;
+    margin: -45px auto 5px;
   }
 `;
 

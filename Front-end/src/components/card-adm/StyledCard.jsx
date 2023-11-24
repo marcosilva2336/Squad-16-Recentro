@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
     display: flex;
-    height: 168px;
     width: 100%;
     margin-left: 1%; 
     margin-top: 2rem;
@@ -10,6 +9,11 @@ export const StyledContainer = styled.div`
     align-items: center; 
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
+
+    @media (max-width: 768px) {
+        height: 190px;
+    }
+
     @media (max-width: 425px) {
         width: 420px;
         margin-left: 5%;

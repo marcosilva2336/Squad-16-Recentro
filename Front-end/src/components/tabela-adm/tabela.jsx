@@ -190,7 +190,7 @@ const Tabela = ({ darkMode }) => {
       <ModalContainer darkMode={darkMode} isOpen={isModalOpen}>
         <Title2 darkMode={darkMode}>Filtros</Title2>
         <ModalContent darkMode={darkMode}>
-          <input type="text" placeholder="Search..." darkMode={darkMode} />
+          <input type="text" placeholder="🔍 Pesquisar..." darkMode={darkMode} />
           {columnNames.map((colName, index) => (
             <label key={index} darkMode={darkMode}>
               <input darkMode={darkMode} type="checkbox" onChange={() => handleSearchInModal(colName)} /> {colName}

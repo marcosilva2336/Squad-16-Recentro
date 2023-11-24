@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const ScrollableTableContainer = styled.div`
   overflow-x: auto;
   width: 100%;
- 
-
 `;
 
 export const TableContainer = styled.div`
@@ -48,8 +46,8 @@ export const TableRow = styled.tr`
 
 export const TableCell = styled.td`
   text-align: left;
-  border-bottom: 2px solid #ccc;
-  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 13px;
   font-size: 12px;
 
   @media screen and (max-width: 768px) {
@@ -248,12 +246,17 @@ export const ModalContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   z-index: 1000;
   width: 50%;
   background-color: ${props => props.darkMode ? '#303840' : '#fff'};
   color: ${props => props.darkMode ? '#fff' : '#333'};
   box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : '0px 4px 12px rgba(0, 0, 0, 0.1)'};
+  
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    font-size: 12.5px;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -268,13 +271,12 @@ export const ModalContent = styled.div`
     box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : '0px 4px 12px rgba(0, 0, 0, 0.1)'};
   }
 
-  /* Use flex to create columns */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 
   label {
-    width: 33%; /* Each checkbox takes up 30% of the width */
+    width: 33%; 
     margin-bottom: 10px;
   }
 `;

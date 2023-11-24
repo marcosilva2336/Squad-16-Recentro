@@ -19,6 +19,7 @@ const Content = styled.div`
   background-color: ${props => props.darkMode ? '#181a1e' : '#F6F6F9'}; 
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
   transition: background-color 0.3s, color 0.3s; 
   
   @media screen and (max-width: 425px) {
