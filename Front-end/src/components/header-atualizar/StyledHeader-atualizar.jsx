@@ -5,7 +5,7 @@ export const Header = styled.div`
 padding: 100px 0px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: white;
+  background: #ffa500;
   position: relative;
   z-index: 1;
   @media screen and (max-width:425px){
@@ -29,7 +29,7 @@ export const HeaderImage = styled.img`
 `;
 
 export const Title = styled.h2`
-   color: #333; 
+   color: #fff; 
   text-align: center;
   @media screen and (max-width:425px){
    font-size:15px;

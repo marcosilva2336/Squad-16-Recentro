@@ -80,7 +80,7 @@ export const Step = styled.div`
   height: 60px;
   line-height: 200px;
   border-radius: 50%;
-  background-color: ${props => props.active ? '#ffa500' : '#ddd'};
+  background-color: ${props => props.active ? '#0092F2' : '#ddd'};
   color: white;
   font-size: 30px;
   font-weight: 600;

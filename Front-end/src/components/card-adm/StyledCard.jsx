@@ -20,7 +20,8 @@ export const StyledContainer = styled.div`
     }
 
     @media (max-width: 375px) {
-        width: 400px;
+        width: 375px;
+        margin-left: 3%;
     }
 `
 export const Box = styled.div`
@@ -29,7 +30,7 @@ export const Box = styled.div`
   padding: 15px;
   width: 370px;
   height: 145px;
-  background-color: ${props => props.darkMode ? '#202529' : '#FFF'}; // Fundo muda com darkMode
+  background-color: ${props => props.darkMode ? '#202529' : '#FFF'}; 
   margin: 10px 35px;
   border-radius: 20px;
   box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'}; // Sombra removida no darkMode
@@ -38,7 +39,7 @@ export const Box = styled.div`
       position: absolute;
       top: 25px;
       left: 20px;
-      color: ${props => props.darkMode ? '#FFF' : '#000000'}; // Cor do texto muda com darkMode
+      color: ${props => props.darkMode ? '#FFF' : '#FFF'}; 
       font-size: 25px;
   }
 
@@ -46,9 +47,9 @@ export const Box = styled.div`
       position: absolute;
       top: 70px;
       left: 60px;
-      color: ${props => props.darkMode ? '#FFF' : '#000'}; // Cor do texto muda com darkMode
+      color: ${props => props.darkMode ? '#FFF' : '#FFF'}; 
       font-size: 30px;
-      text-shadow: ${props => props.darkMode ? 'none' : '1px 1px 3px #ccc'}; // Sombra do texto removida no darkMode
+      text-shadow: ${props => props.darkMode ? 'none' : '1px 1px 3px #070707'}; 
   }
 
 
@@ -56,7 +57,7 @@ export const Box = styled.div`
         position: absolute;
         top: 45px;
         left: 14em; 
-        color: #FF6900;
+        color: white;
 
     }
 

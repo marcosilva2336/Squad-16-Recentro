@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ScrollableTableContainer = styled.div`
   overflow-x: auto;
   width: 100%;
+ 
 `;
 
 export const TableContainer = styled.div`
@@ -47,7 +48,7 @@ export const TableRow = styled.tr`
 export const TableCell = styled.td`
   text-align: left;
   border-bottom: 1px solid #ccc;
-  padding: 13px;
+  padding: 12.5px;
   font-size: 12px;
 
   @media screen and (max-width: 768px) {
@@ -236,6 +237,10 @@ export const PopupButton = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-left: 20px;
   margin-top: 20px;
+  @media screen and (max-width: 425px) {
+    padding: 8px;
+    margin-top: 10px;
+  }
 `;
 
 export const ModalContainer = styled.div`

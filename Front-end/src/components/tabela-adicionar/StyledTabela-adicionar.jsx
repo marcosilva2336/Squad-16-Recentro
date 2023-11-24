@@ -75,7 +75,7 @@ export const Step = styled.div`
   height: 60px;
   line-height: 200px;
   border-radius: 50%;
-  background-color: ${props => props.active ? '#1f5f12' : '#ddd'};
+  background-color: ${props => props.active ? '#0092F2' : '#ddd'};
   color: white;
   font-size: 30px;
   font-weight: 600;
@@ -144,7 +144,7 @@ export const Button = styled.button`
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-right: 10px;
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 export const ArrowIcon = styled(FaArrowLeft)`

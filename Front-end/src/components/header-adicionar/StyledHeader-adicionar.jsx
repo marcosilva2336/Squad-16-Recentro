@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const Header = styled.div`
-  background-color: #ffa500;
+  background-color: #20c29c;
   padding: 100px 0px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
