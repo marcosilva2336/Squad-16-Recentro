@@ -1,0 +1,23 @@
+.custom-marker {
+     width: 25px;
+     height: 25px;
+     background-color: #ff6900;
+     border-radius: 50%;
+     border: 2px solid #fff;
+   }
+   
+   .popup-content {
+     max-width: 90%; 
+     text-align: left;
+   }
+   
+   .popup-content h3 {
+     margin: 0 0 10px;
+     font-size: 18px;
+   }
+   
+   .popup-content p {
+     margin: 0;
+     font-size: 14px;
+   }
+   
