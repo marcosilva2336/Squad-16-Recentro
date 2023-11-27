@@ -251,7 +251,7 @@ export const ModalContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  padding: 30px;
+  padding: 40px;
   z-index: 1000;
   width: 50%;
   background-color: ${props => props.darkMode ? '#303840' : '#fff'};
