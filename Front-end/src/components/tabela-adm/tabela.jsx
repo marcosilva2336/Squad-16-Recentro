@@ -37,7 +37,7 @@ const Tabela = ({ darkMode }) => {
     "Pichação", "Observações", "Proprietário Localizado", "Investimento", "Qual Investimento", "Tributação", "Autorização de Informação",
     "Proprietário Cartório", "Proprietário Campo", "Contato Proprietário",  "Uso do Imóvel",
     "Valor do Aluguel", "Valor de Venda", "Latitude", "Longitude", "RGI", "Planta", "Planta Regional", "Judicialização",
-    "Descrição da Judicialização", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo"
+    "Descrição da Judicialização", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo", "Coincidência Proprietário"
   ];
   const fetchDataFromBackend = async () => {
     try {
@@ -87,7 +87,8 @@ const Tabela = ({ darkMode }) => {
             DescricaoDaJudicializacao: item.descricaoJudicializacao,
             ProcessosAbertosDesde2018: item.ProcessoAberto2018,
             NumeroDaLicenca: item.nuLicenca,
-            NumeroDoProcesso: item.nuProcesso
+            NumeroDoProcesso: item.nuProcesso,
+            CoincidênciaProprietário: item.coincidenciaProprietario
           
           
           // Adicione outros campos conforme necessário
