@@ -12,6 +12,8 @@ const Body = styled.div`
     background-color: ${props => props.darkMode ? '#181a1e' : '#F6F6F9'}; 
     color: ${props => props.darkMode ? 'white' : 'black'}; 
     transition: background-color 0.3s, color 0.3s; 
+
+    
 `;
 const Content = styled.div`
   display: flex;
@@ -19,29 +21,23 @@ const Content = styled.div`
   background-color: ${props => props.darkMode ? '#181a1e' : '#F6F6F9'}; 
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
   transition: background-color 0.3s, color 0.3s; 
   
-  @media screen and (max-width: 425px) {
-    height: 110vh;
-  }
-
-  @media screen and (max-width: 375px) {
-    height: 110vh;
-    width: 110vw;
-  }
 `;
 
+
 function Admin() {
-    const [darkMode, setDarkMode] = useState(false); // Estado para controlar o modo escuro
+    const [darkMode, setDarkMode] = useState(false); 
 
     const toggleDarkMode = () => {
-        setDarkMode(!darkMode); // Alterna o estado do darkMode
+        setDarkMode(!darkMode);
     };
 
     return (
         <Body darkMode={darkMode}>
             <Sidebar onToggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-            <Content darkMode={darkMode}> {/* Adicione o prop darkMode aqui */}
+            <Content darkMode={darkMode}> 
                 <StyledContainer>
                     <Cards bairro='1' darkMode={darkMode} />
                     <Cards bairro='2' darkMode={darkMode} />

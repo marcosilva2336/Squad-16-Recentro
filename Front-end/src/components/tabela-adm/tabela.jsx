@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaTimes } from 'react-icons/fa';
 import {
   ScrollableTableContainer,
   TableContainer,
@@ -6,19 +7,27 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  SearchInput,
   Title,
+  Title2,
   TabContainer,
   Tab,
   ButtonContainer,
   ColumnRangeButton,
   SearchAndTabContainer,
+  ModalContainer,
+  PopupButton,
+  ModalContent,
+  ButtonClose,
+  ButtonCloseContainer
 } from './StyledTabela';
 
 const Tabela = ({ darkMode }) => {
   const [colRange, setColRange] = useState(0);
   const [fakeData, setFakeData] = useState([]);
-  const [activeButton, setActiveButton] = useState(1); 
+  const [activeButton, setActiveButton] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedColumns, setSelectedColumns] = useState([]);
 
   const columnNames = [
     "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
@@ -29,7 +38,7 @@ const Tabela = ({ darkMode }) => {
     "Descrição da Judicialização", "Observações", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo"
   ];
 
-  // Função que gerar os dados lá
+
   const generateFakeData = (startId, endId) => {
     return Array.from({ length: endId - startId + 1 }, (_, index) => {
       const rowIndex = startId + index - 1;
@@ -112,11 +121,9 @@ const Tabela = ({ darkMode }) => {
           case "Descrição da Judicialização":
             return `Descrição ${rowIndex + 1}`;
           case "Observações":
-
             return `Outra observação ${rowIndex + 1}`;
           case "Processos Abertos Desde 2018":
             return Math.floor(Math.random() * 10);
-
           default:
             return `Dado ${colIndex + 1}-${rowIndex + 1}`;
         }
@@ -125,36 +132,60 @@ const Tabela = ({ darkMode }) => {
   };
 
 
-  // Função para mudar o intervalo de colunas
   useEffect(() => {
-    setFakeData(generateFakeData(1, 10)); // Dados iniciais
-  }, []);
+    setFakeData(generateFakeData(1, 10));
+  }, [colRange]);
 
   const handleColRangeChange = (rangeNumber) => {
-    setActiveButton(rangeNumber); 
+    setActiveButton(rangeNumber);
     const startId = rangeNumber * 10 - 9;
     const endId = startId + 9;
     setFakeData(generateFakeData(startId, endId));
   };
-  // Mesma coisa da de cima. Essa é das abas e a outra dos botões
+
   const handleTabChange = (rangeNumber) => {
     setColRange(rangeNumber);
   };
-  // Cálculo dos índices das colunas com base no número clicado
+
+  const handleSearchInModal = (column) => {
+    const newSelectedColumns = selectedColumns.includes(column)
+      ? selectedColumns.filter((col) => col !== column)
+      : [...selectedColumns, column];
+
+    setSelectedColumns(newSelectedColumns);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen((prevIsOpen) => !prevIsOpen);
+  };
+  const filterColumns = (row) => {
+    return displayedColumnNames.map((colName) => row[columnNames.indexOf(colName)]);
+  };
+
+  const filterData = (data) => {
+    return data.filter((row) =>
+      row.some(
+        (cell, cellIndex) =>
+          cell !== null &&
+          (selectedColumns.length > 0
+            ? selectedColumns.includes(columnNames[colRange * 10 + cellIndex])
+            : true) &&
+          cell.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  };
+
   const startColIndex = colRange * 10;
   const endColIndex = Math.min(startColIndex + 10, columnNames.length);
 
-  // Filtra os nomes das colunas e os dados com base no intervalo selecionado
-  const displayedColumnNames = columnNames.slice(startColIndex, endColIndex);
-  const displayedData = fakeData.map(row => row.slice(startColIndex, endColIndex));
-
+  const displayedColumnNames = selectedColumns.length > 0 ? selectedColumns : columnNames.slice(startColIndex, endColIndex);
+  const displayedData = filterData(fakeData).map(filterColumns);
   return (
     <>
       <Title darkMode={darkMode}>Registro de Imóveis</Title>
 
       <SearchAndTabContainer>
-
-        <SearchInput darkMode={darkMode} placeholder="🔍 Pesquisar..." />
+        <PopupButton onClick={toggleModal}>Filtros</PopupButton>
 
         <TabContainer darkMode={darkMode}>
           {[1, 2, 3, 4, 5].map(rangeNumber => (
@@ -169,6 +200,35 @@ const Tabela = ({ darkMode }) => {
           ))}
         </TabContainer>
       </SearchAndTabContainer>
+
+      <ModalContainer darkMode={darkMode} isOpen={isModalOpen}>
+        <Title2 darkMode={darkMode}>Filtros</Title2>
+        <ModalContent darkMode={darkMode}>
+          <input
+            type="text"
+            placeholder="🔍 Pesquisar..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            darkMode={darkMode}
+          />
+          {columnNames.map((colName, index) => (
+            <label key={index} darkMode={darkMode}>
+              <input
+                darkMode={darkMode}
+                type="checkbox"
+                checked={selectedColumns.includes(colName)}
+                onChange={() => handleSearchInModal(colName)}
+              /> {colName}
+            </label>
+          ))}
+        </ModalContent>
+        <ButtonCloseContainer darkMode={darkMode}>
+          <ButtonClose darkMode={darkMode} onClick={toggleModal}>
+            <FaTimes />
+          </ButtonClose>
+        </ButtonCloseContainer>
+      </ModalContainer>
+
       <ScrollableTableContainer>
         <TableContainer darkMode={darkMode}>
           <table>
@@ -179,11 +239,14 @@ const Tabela = ({ darkMode }) => {
                 ))}
               </tr>
             </TableHeader>
+
             <TableBody darkMode={darkMode}>
               {displayedData.map((row, rowIndex) => (
                 <TableRow key={rowIndex} darkMode={darkMode}>
                   {row.map((cell, cellIndex) => (
-                    <TableCell darkMode={darkMode} key={cellIndex}>{cell}</TableCell>
+                    <TableCell darkMode={darkMode} key={cellIndex}>
+                      {cell}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))}
@@ -203,7 +266,6 @@ const Tabela = ({ darkMode }) => {
           </ColumnRangeButton>
         ))}
       </ButtonContainer>
-
     </>
   );
 };

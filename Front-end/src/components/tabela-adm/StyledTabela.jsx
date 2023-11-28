@@ -4,7 +4,6 @@ export const ScrollableTableContainer = styled.div`
   overflow-x: auto;
   width: 100%;
  
-
 `;
 
 export const TableContainer = styled.div`
@@ -48,8 +47,8 @@ export const TableRow = styled.tr`
 
 export const TableCell = styled.td`
   text-align: left;
-  border-bottom: 2px solid #ccc;
-  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 12.5px;
   font-size: 12px;
 
   @media screen and (max-width: 768px) {
@@ -208,5 +207,101 @@ export const Tab = styled.button`
     padding: 7px;
     font-size: 10px;
     
+  }
+`;
+
+export const Title2 = styled.h1`
+  color: ${props => props.darkMode ? '#fff' : '#333'};
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    margin-top: 45px;
+  }
+
+  @media screen and (max-width: 375px) {
+    font-size: 18px;
+    margin-top: 55px;
+  }
+`;
+
+export const PopupButton = styled.button`
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color:#ff6900;
+  color: white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-left: 20px;
+  margin-top: 20px;
+  @media screen and (max-width: 425px) {
+    padding: 8px;
+    margin-top: 10px;
+  }
+`;
+
+export const ModalContainer = styled.div`
+  display: ${props => (props.isOpen ? 'flex' : 'none')};
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 40px;
+  z-index: 1000;
+  width: 50%;
+  background-color: ${props => props.darkMode ? '#303840' : '#fff'};
+  color: ${props => props.darkMode ? '#fff' : '#333'};
+  box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : '0px 4px 12px rgba(0, 0, 0, 0.1)'};
+  
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    font-size: 12.5px;
+  }
+`;
+
+export const ModalContent = styled.div`
+  input[type="text"] {
+    width: 600px;
+    margin-bottom: 25px;
+    padding: 10px 40px 10px 20px;
+    border: none;
+    border-radius: 7px;
+    background-color: ${props => props.darkMode ? '#303840' : '#fff'};
+    color: ${props => props.darkMode ? '#fff' : '#333'};
+    box-shadow: ${props => props.darkMode ? '0 2rem 3rem rgba(0, 0, 0, 0.4)' : '0px 4px 12px rgba(0, 0, 0, 0.1)'};
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  label {
+    width: 33%; 
+    margin-bottom: 10px;
+  }
+`;
+
+export const ButtonCloseContainer = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+
+export const ButtonClose = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  color: ${props => props.darkMode ? '#fff' : '#333'};
+  transition: color 0.3s ease; 
+
+  &:hover {
+    color: #ff0000;
   }
 `;
