@@ -15,7 +15,7 @@ export const Container = styled.div`
   z-index: 2;
     
   @media screen and (max-width:1300px){
-    width: 1150px;
+    width: 1000px;
   }
 
   @media screen and (max-width:768px){

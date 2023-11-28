@@ -13,6 +13,12 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
   z-index: 2;
+
+   
+  @media screen and (max-width:1300px){
+    width: 1000px;
+  }
+
   @media screen and (max-width:768px){
     width: 600px;
     margin: -45px auto 10px;
