@@ -34,7 +34,7 @@ const Tabela = ({ darkMode }) => {
   const columnNames = [
     "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
     "Nome do Edifício", "Nº de Pavimentos em Uso", "Disponibilidade", "Atividade de Funcionamento", "Grau de Risco", "Laudo", "Acessibilidade",
-    "Pichação", "Observações", "Proprietário Localizado", "Investimento", "Qual Investimento", "Tributação", "Autorização de Informação",
+    "Pichação", "Observação 1", "Observação 2 ", "Proprietário Localizado", "Investimento", "Qual Investimento", "Tributação", "Autorização de Informação",
     "Proprietário Cartório", "Proprietário Campo", "Contato Proprietário",  "Uso do Imóvel",
     "Valor do Aluguel", "Valor de Venda", "Latitude", "Longitude", "RGI", "Planta", "Planta Regional", "Judicialização",
     "Descrição da Judicialização", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo", "Coincidência Proprietário"
@@ -66,7 +66,8 @@ const Tabela = ({ darkMode }) => {
             Laudo: item.laudo,
             Acessibilidade: item.acessibilidade,
             Pichacao: item.pichacao,
-            Observacoes: item.obsevacao,
+            Observacao: item.obsevacao,
+            Observacao2: item.observacao,
             ProprietarioLocalizado: item.proprietarioLocalizado,
             Investimento: item.investimento,
             QualInvestimento: item.qualInvestimento,
