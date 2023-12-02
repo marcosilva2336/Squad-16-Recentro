@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledCheckBox } from './StyledCheckBox'
 
-function CheckBox({ nome, status, onChange, isChecked }) {
+function CheckBox({ nome, status, handleCheckboxChange }) {
   return (
     <StyledCheckBox>
       <div className='box'>
@@ -11,8 +11,8 @@ function CheckBox({ nome, status, onChange, isChecked }) {
             type='checkbox'
             id={nome}
             name={nome}
-            checked={isChecked}
-            onChange={() => onChange(nome)}
+            value={status}
+            onChange={() => handleCheckboxChange(event.target.value)}
           />
           {status}
         </label>
