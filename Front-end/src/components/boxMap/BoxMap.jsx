@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyledBoxMap } from './StyledBoxMap'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import MapC from '../map/Map'
 import BarraPesquisa from '../barra-pesquisa/BarraPesquisa'
 import CheckBox from '../checkBox/CheckBox'
+import axios from 'axios'
 
 function BoxMap() {
   const [isVisible, setIsVisible] = useState(true)
@@ -29,6 +30,19 @@ function BoxMap() {
       setCheckboxState(checkboxState.filter(checkbox => checkbox !== checkboxValue))
     }
   }
+  
+  const fetchDataFromBackend = async () => {
+    const response = await axios.get(`http://localhost:8080/imovel/checkbox-filter?available=${checkboxState['disponiveis']}&occupied=${checkboxState['ocupados']}&atConstruction=${checkboxState['emObras']}&abandoned=${checkboxState['abandonados']}&cowork=${checkboxState['cowork']}&recifeAntigo=${checkboxState['recifeAntigo']}&santoAmaro=${checkboxState['santoAmaro']}&saoJose=${checkboxState['saoJose']}`)
+    const data = response.data
+    setFetchProperties(data)
+  }
+
+  useEffect(() => {
+    fetchDataFromBackend()
+  })
+
+  const [fetchProperties, setFetchProperties] = useState([])
+
 
   console.log(checkboxState)
 
