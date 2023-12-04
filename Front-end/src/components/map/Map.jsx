@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
-import Markers from '../../helpers/LocalMakers'
 import recentroLogo from '../../assets/logorecentro.png'
 
 mapboxgl.accessToken = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN
 
-
-
-function Map() {
+function Map({ fetchProperties }) {
   useEffect(() => {
-
 
     const map = new mapboxgl.Map({
       container: 'map',
@@ -18,18 +14,17 @@ function Map() {
       zoom: 13,
     })
 
-    Markers.forEach(local => {
+    fetchProperties.forEach(property => {
       new mapboxgl.Marker(({ color: '#ff6900'}))
-        .setLngLat([local.longitude, local.latitude])
-        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${local.nome}</h3>`))
+        .setLngLat([property.longitude, property.latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${property.nome}</h3>`))
         .addTo(map)
     })
-
 
     return () => {
       map.remove()
     }
-  }, [])
+  }, [fetchProperties])
 
   return (
     <div>

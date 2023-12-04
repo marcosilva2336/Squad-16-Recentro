@@ -20,6 +20,7 @@ function BoxMap() {
     'saoJose',
   ]
   const [checkboxState, setCheckboxState] = useState([])
+  const [fetchProperties, setFetchProperties] = useState([])
 
   function handleCheckboxChange(checkboxValue) {
     if (!checkboxState.includes(checkboxValue))  {
@@ -30,21 +31,29 @@ function BoxMap() {
       setCheckboxState(checkboxState.filter(checkbox => checkbox !== checkboxValue))
     }
   }
-  
+
   const fetchDataFromBackend = async () => {
-    const response = await axios.get(`http://localhost:8080/imovel/checkbox-filter?available=${checkboxState['disponiveis']}&occupied=${checkboxState['ocupados']}&atConstruction=${checkboxState['emObras']}&abandoned=${checkboxState['abandonados']}&cowork=${checkboxState['cowork']}&recifeAntigo=${checkboxState['recifeAntigo']}&santoAmaro=${checkboxState['santoAmaro']}&saoJose=${checkboxState['saoJose']}`)
+    const response = await axios.get('http://localhost:8080/imovel/checkbox-filter', {
+      params: {
+        available: checkboxState.includes('disponiveis') ? 'disponivel' : 'doesnt exist',
+        occupied: checkboxState.includes('ocupado') ? 'disponivel' : 'doesnt exist',
+        atConstruction: checkboxState.includes('emObra') ? 'em obra' : 'doesnt exist',
+        abandoned: checkboxState.includes('abandonados') ? 'abandonas' : 'doesnt exist',
+        cowork: checkboxState.includes('cowork') ? 'cowork' : 'doesnt exist',
+        recifeAntigo: checkboxState.includes('recifeAntigo') ? 'Recife Antigo' : 'doesnt exist',
+        santoAmaro: checkboxState.includes('santoAmaro') ? 'Santo Amaro' : 'doesnt exist',
+        saoJose: checkboxState.includes('saoJose') ? 'Sao Jose' : 'doesnt exist',
+      }
+    })
     const data = response.data
     setFetchProperties(data)
   }
 
   useEffect(() => {
-    fetchDataFromBackend()
-  })
-
-  const [fetchProperties, setFetchProperties] = useState([])
-
-
-  console.log(checkboxState)
+    if (checkboxState.length > 0) {
+      fetchDataFromBackend()
+    }
+  }, [checkboxState])
 
   return (
     <StyledBoxMap>
@@ -52,7 +61,7 @@ function BoxMap() {
         <div className='boxPesquisa'>
           <BarraPesquisa />
         </div>
-        <MapC />
+        <MapC fetchProperties={fetchProperties} />
         <div className='menuP'>
           <h1>Filtros</h1>
           <button id='buttonMenu' onClick={() => setIsVisible(!isVisible)}>
