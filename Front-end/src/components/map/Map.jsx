@@ -19,12 +19,23 @@ function Map() {
     })
 
     Markers.forEach(local => {
-      new mapboxgl.Marker(({ color: '#ff6900'}))
+      new mapboxgl.Marker({ color: '#ff6900' })
         .setLngLat([local.longitude, local.latitude])
-        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${local.nome}</h3>`))
+        .setPopup(
+          new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+          })
+            .setHTML(`
+              <h1 style="background-color: #ff6900; color: white; padding: 10px; border-radius: 4px; text-align: center; margin: 0;">Informações Imóvel</h1>
+              <h3 style="font-size: 13px; margin-top: 10px;">${local.nome}</h3>
+              <p style="font-size: 12px; margin-top: 5px;"><strong>Rua:</strong> ${local.rua}</p>
+              <p style="font-size: 12px; margin-top: 5px;"><strong>Situação:</strong> ${local.situação}</p>
+            `)
+        )
         .addTo(map)
     })
-
+    
 
     return () => {
       map.remove()
