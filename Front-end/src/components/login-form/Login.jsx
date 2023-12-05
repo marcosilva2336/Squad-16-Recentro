@@ -15,7 +15,7 @@ function Login() {
 
       if(response.status == 200){
         const userType = response.data.role
-        window.location.href = userType === "ADMIN" ? "/admin" : "/";
+        window.location.href = userType === "ROLE_ADMIN" ? "/admin" : "/userContext";
       }
     } catch (error) {
       console.log(error)

@@ -34,7 +34,7 @@ function Map() {
 
     data.forEach(local => {
       const { longitude, latitude } = local;
-      console.log("PASSOU PASSOU AQUI PASSOUU", longitude, latitude);
+    
 
       const markerElement = document.createElement('div');
       markerElement.className = 'custom-marker';
