@@ -73,7 +73,7 @@
 
   Ao efetuar o login, você terá acesso ao dashboard no qual consta os dados da aplicação:
 
- ![ok9](https://i.imgur.com/lf6zlBs.png)
+ ![ok9](https://i.postimg.cc/T3QHCxpP/recentro.png)
 
 
 
