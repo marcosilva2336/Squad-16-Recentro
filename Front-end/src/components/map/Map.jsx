@@ -1,72 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import recentroLogo from '../../assets/logorecentro.png';
-import './map.css';
-import axios from 'axios';
+import React, { useEffect } from 'react'
+import mapboxgl from 'mapbox-gl'
+import recentroLogo from '../../assets/logorecentro.png'
 
-mapboxgl.accessToken = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN;
+mapboxgl.accessToken = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN
 
-function Map() {
-  const [data, setData] = useState([]);
-
+function Map({ fetchProperties }) {
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/imovel/locations");
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    
 
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-34.8813, -8.0607],
+      center: [-34.8813, -8.0607], // Coordenadas para Recife Antigo
       zoom: 13,
-    });
+    })
 
-    data.forEach(local => {
-      const { longitude, latitude } = local;
-    
-
-      const markerElement = document.createElement('div');
-      markerElement.className = 'custom-marker';
-
-      new mapboxgl.Marker(markerElement)
-        .setLngLat([longitude, latitude])
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 })
-            .setHTML(`
-              <div class="popup-content">
-                <h3>${local.nome}</h3>
-                <p>Descrição: ${local.descricao}</p>
-                <!-- Adicione mais conteúdo aqui, se necessário -->
-              </div>
-            `)
-        )
-        .addTo(map);
-    });
+    fetchProperties.forEach(property => {
+      new mapboxgl.Marker(({ color: '#ff6900'}))
+        .setLngLat([property.longitude, property.latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${property.nome}</h3>`))
+        .addTo(map)
+    })
 
     return () => {
-      map.remove();
-    };
-  }, [data]);
+      map.remove()
+    }
+  }, [fetchProperties])
 
   return (
     <div>
-      <div id="map" style={{ width: '100%', height: '90vh', borderRadius: '20px 20px 0px 0px' }}>
-        <img src={recentroLogo} alt="Logo da Recentro" style={{position: 'absolute', zIndex: '999999', width: '16%', right: '5%', opacity: '.50', bottom: '65%',}}
-        />
+      <div id="map" style={{ width: '100%', height: '90vh', borderRadius: '20px 20px 0px 0px'}}>
+        <img src={recentroLogo} alt="Logo da Recentro" style={{position: 'absolute',
+          zIndex: '999999',
+          width: '16%',
+          right: '5%',
+          opacity:'.50',
+          bottom: '65%'}} />
       </div>
     </div>
-  );
+
+  )
 }
 
-export default Map;
+export default Map
