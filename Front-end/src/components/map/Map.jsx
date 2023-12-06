@@ -8,12 +8,17 @@ mapboxgl.accessToken = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 function Map() {
   const [data, setData] = useState([]);
+  const [allInformations, setAllInformaltions] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/imovel/locations");
+        const response = await axios.get("http://localhost:8080/imovel/findall");
+        const responseInformations = await axios.get("http://localhost:8080/imovel/findall");
+        
         setData(response.data);
+        setAllInformaltions(responseInformations.data)
+        console.log(responseInformations.data)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -33,7 +38,8 @@ function Map() {
     });
 
     data.forEach(local => {
-      const { longitude, latitude } = local;
+      const { longitude, latitude} = local;
+      
     
 
       const markerElement = document.createElement('div');
@@ -45,9 +51,9 @@ function Map() {
           new mapboxgl.Popup({ offset: 25 })
             .setHTML(`
               <div class="popup-content">
-                <h3>${local.nome}</h3>
-                <p>Descrição: ${local.descricao}</p>
-                <!-- Adicione mais conteúdo aqui, se necessário -->
+                <h3>Bairro: ${local.bairro}</h3>
+                <p>Situação: ${local.situacao}</p>
+                <p>Endereço: ${local.endereco}</p>
               </div>
             `)
         )
