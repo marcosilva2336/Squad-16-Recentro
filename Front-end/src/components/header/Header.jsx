@@ -16,8 +16,6 @@ function Header() {
     setIsModalOpen((state) => state ? false : true)
   }
 
-  console.log(isModalOpen)
-
   return (
     <StyledHeader>
       <Navbar>

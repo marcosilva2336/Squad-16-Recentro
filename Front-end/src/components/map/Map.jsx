@@ -4,7 +4,7 @@ import recentroLogo from '../../assets/logorecentro.png'
 
 mapboxgl.accessToken = import.meta.env.VITE_REACT_APP_MAPBOX_ACCESS_TOKEN
 
-function Map({ fetchProperties }) {
+function Map({ dataToBeDisplayedOnMap }) {
   useEffect(() => {
 
     const map = new mapboxgl.Map({
@@ -14,7 +14,7 @@ function Map({ fetchProperties }) {
       zoom: 13,
     })
 
-    fetchProperties.forEach(property => {
+    dataToBeDisplayedOnMap.forEach(property => {
       new mapboxgl.Marker(({ color: '#ff6900'}))
         .setLngLat([property.longitude, property.latitude])
         .setPopup(new mapboxgl.Popup().setHTML(`<h3>${property.nome}</h3>`))
@@ -24,7 +24,7 @@ function Map({ fetchProperties }) {
     return () => {
       map.remove()
     }
-  }, [fetchProperties])
+  }, [dataToBeDisplayedOnMap])
 
   return (
     <div>

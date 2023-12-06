@@ -10,16 +10,20 @@ function BoxMap() {
   const [isVisible, setIsVisible] = useState(true)
 
   const checkboxValues = [
-    'disponiveis',
-    'ocupados',
-    'emObras',
-    'abandonados',
-    'cowork',
-    'recifeAntigo',
-    'santoAmaro',
-    'saoJose',
+    'Disponível',
+    'Ocupado',
+    'Em obras',
+    'Abandonado',
+    'Cowork',
+    'Recife Antigo',
+    'Santo Amaro',
+    'São José',
   ]
-  const [checkboxState, setCheckboxState] = useState([])
+  const defaultCheckedCheckbox = 'Recife Antigo'
+  const [checkboxState, setCheckboxState] = useState([defaultCheckedCheckbox])
+
+  const [searhBarInput, setSearchBarInput] = useState('')
+
   const [fetchProperties, setFetchProperties] = useState([])
 
   function handleCheckboxChange(checkboxValue) {
@@ -35,14 +39,14 @@ function BoxMap() {
   const fetchDataFromBackend = async () => {
     const response = await axios.get('http://localhost:8080/imovel/checkbox-filter', {
       params: {
-        available: checkboxState.includes('disponiveis') ? 'disponivel' : 'doesnt exist',
-        occupied: checkboxState.includes('ocupado') ? 'disponivel' : 'doesnt exist',
-        atConstruction: checkboxState.includes('emObra') ? 'em obra' : 'doesnt exist',
-        abandoned: checkboxState.includes('abandonados') ? 'abandonas' : 'doesnt exist',
-        cowork: checkboxState.includes('cowork') ? 'cowork' : 'doesnt exist',
-        recifeAntigo: checkboxState.includes('recifeAntigo') ? 'Recife Antigo' : 'doesnt exist',
-        santoAmaro: checkboxState.includes('santoAmaro') ? 'Santo Amaro' : 'doesnt exist',
-        saoJose: checkboxState.includes('saoJose') ? 'Sao Jose' : 'doesnt exist',
+        available: checkboxState.includes('Disponível') ? 'Disponível' : 'doesnt exist',
+        occupied: checkboxState.includes('Ocupado') ? 'Ocupado' : 'doesnt exist',
+        atConstruction: checkboxState.includes('Em obra') ? 'Em obra' : 'doesnt exist',
+        abandoned: checkboxState.includes('Abandonado') ? 'Abandonado' : 'doesnt exist',
+        cowork: checkboxState.includes('Cowork') ? 'Cowork' : 'doesnt exist',
+        recifeAntigo: checkboxState.includes('Recife Antigo') ? 'Recife Antigo' : 'doesnt exist',
+        santoAmaro: checkboxState.includes('Santo Amaro') ? 'Santo Amaro' : 'doesnt exist',
+        saoJose: checkboxState.includes('Sao Jose') ? 'Sao Jose' : 'doesnt exist',
       }
     })
     const data = response.data
@@ -50,18 +54,25 @@ function BoxMap() {
   }
 
   useEffect(() => {
-    if (checkboxState.length > 0) {
-      fetchDataFromBackend()
-    }
+    fetchDataFromBackend()
   }, [checkboxState])
+
+  const handleSearchBarInput = (event) => {
+    setSearchBarInput(event.target.value)
+  }
+
+  const filteredDataBySearchBarInput = fetchProperties.filter(data => data.endereco.includes(searhBarInput))
+  const dataToBeDisplayedOnMap = filteredDataBySearchBarInput.length > 0 ? filteredDataBySearchBarInput : fetchProperties
+
+  console.log(checkboxState)
 
   return (
     <StyledBoxMap>
       <div className='container'>
         <div className='boxPesquisa'>
-          <BarraPesquisa />
+          <BarraPesquisa handleSearchBarInput={handleSearchBarInput} />
         </div>
-        <MapC fetchProperties={fetchProperties} />
+        <MapC dataToBeDisplayedOnMap={dataToBeDisplayedOnMap} />
         <div className='menuP'>
           <h1>Filtros</h1>
           <button id='buttonMenu' onClick={() => setIsVisible(!isVisible)}>
