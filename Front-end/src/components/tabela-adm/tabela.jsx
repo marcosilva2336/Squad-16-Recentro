@@ -30,7 +30,6 @@ const Tabela = ({ darkMode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-
   const columnNames = [
     "ID", "DSQFL", "DSQ", "Bairro", "Rua", "Número", "Tipo de Empreendimento", "Área Total", "Situação", "Restaurantes e Cafés",
     "Nome do Edifício", "Nº de Pavimentos em Uso", "Disponibilidade", "Atividade de Funcionamento", "Grau de Risco", "Laudo", "Acessibilidade",
@@ -39,6 +38,7 @@ const Tabela = ({ darkMode }) => {
     "Valor do Aluguel", "Valor de Venda", "Latitude", "Longitude", "RGI", "Planta", "Planta Regional", "Judicialização",
     "Descrição da Judicialização", "Processos Abertos Desde 2018", "Número da Licença", "Número do Processo", "Coincidência Proprietário"
   ];
+
   const fetchDataFromBackend = async () => {
     try {
       const response = await axios.get('http://localhost:8080/imovel/findall');
@@ -103,16 +103,10 @@ const Tabela = ({ darkMode }) => {
       console.error('Error fetching data from the backend', error);
     }
   };
-  
-  
-  
-  
 
   useEffect(() => {
     fetchDataFromBackend(); // Chama a função para obter dados reais do backend
   }, []);
-
-  
 
   const handleColRangeChange = (rangeNumber) => {
     setActiveButton(rangeNumber);
@@ -124,24 +118,39 @@ const Tabela = ({ darkMode }) => {
   const handleTabChange = (rangeNumber) => {
     setColRange(rangeNumber);
   };
+
   const handleSearchInModal = (column) => {
-    setSearchTerm(column);
+     setSearchTerm(column);
     // Remove the line below that closes the modal on checkbox change
     // setIsModalOpen(false);
   };
 
-
   const toggleModal = () => {
     setIsModalOpen((prevIsOpen) => !prevIsOpen);
   };
+  
+  const filterColumns = (row) => {
+    return displayedColumnNames.map((colName) => row[columnNames.indexOf(colName)]);
+  };
 
-  const startColIndex = colRange * 10;
+  const filterData = (data) => {
+    return data.filter((row) =>
+      row.some(
+        (cell, cellIndex) =>
+          cell !== null &&
+          (selectedColumns.length > 0
+            ? selectedColumns.includes(columnNames[colRange * 10 + cellIndex])
+            : true) &&
+          cell.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  };
+
+const startColIndex = colRange * 10;
 const endColIndex = Math.min(startColIndex + 10, columnNames.length);
 
 const displayedColumnNames = columnNames.slice(startColIndex, endColIndex);
 const displayedData = realData.map(row => Object.values(row).slice(startColIndex, endColIndex));
-
-
 
   return (
     <>
@@ -164,23 +173,33 @@ const displayedData = realData.map(row => Object.values(row).slice(startColIndex
         </TabContainer>
       </SearchAndTabContainer>
 
-
       <ModalContainer darkMode={darkMode} isOpen={isModalOpen}>
         <Title2 darkMode={darkMode}>Filtros</Title2>
         <ModalContent darkMode={darkMode}>
-          <input type="text" placeholder="🔍 Pesquisar..." darkMode={darkMode} />
+          <input
+            type="text"
+            placeholder="🔍 Pesquisar..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            darkMode={darkMode}
+          />
           {columnNames.map((colName, index) => (
             <label key={index} darkMode={darkMode}>
-              <input darkMode={darkMode} type="checkbox" onChange={() => handleSearchInModal(colName)} /> {colName}
+              <input
+                darkMode={darkMode}
+                type="checkbox"
+                checked={selectedColumns.includes(colName)}
+                onChange={() => handleSearchInModal(colName)}
+              /> {colName}
             </label>
           ))}
         </ModalContent>
-        <ButtonCloseContainer darkMode={darkMode} >
-        <ButtonClose darkMode={darkMode} onClick={toggleModal}>
-          <FaTimes />
-        </ButtonClose>
+        <ButtonCloseContainer darkMode={darkMode}>
+          <ButtonClose darkMode={darkMode} onClick={toggleModal}>
+            <FaTimes />
+          </ButtonClose>
         </ButtonCloseContainer>
-      </ModalContainer >
+      </ModalContainer>
 
       <ScrollableTableContainer>
         <TableContainer darkMode={darkMode}>
@@ -192,7 +211,6 @@ const displayedData = realData.map(row => Object.values(row).slice(startColIndex
                 ))}
               </tr>
             </TableHeader>
-                      
 
           <TableBody darkMode={darkMode}>
             {displayedData.map((row, rowIndex) => (
@@ -204,13 +222,10 @@ const displayedData = realData.map(row => Object.values(row).slice(startColIndex
             ))}
           </TableBody>
 
-         
-
-
-
           </table>
         </TableContainer>
       </ScrollableTableContainer>
+
       <ButtonContainer>
         {[1, 2, 3, 4, 5].map(rangeNumber => (
           <ColumnRangeButton

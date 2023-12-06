@@ -1,19 +1,23 @@
 import React from 'react'
-import {StyledCheckBox} from './StyledCheckBox'
+import { StyledCheckBox } from './StyledCheckBox'
 
-
-function CheckBox({nome,status}) {
-
+function CheckBox({ nome, status, handleCheckboxChange }) {
   return (
-
     <StyledCheckBox>
       <div className='box'>
-        <input id={nome} type="checkbox"/>
-        <span className="check"></span>
-        <label htmlFor={nome}>{status}</label>
+        <span className='check'></span>
+        <label htmlFor={nome}>
+          <input
+            type='checkbox'
+            id={nome}
+            name={nome}
+            value={status}
+            onChange={() => handleCheckboxChange(event.target.value)}
+          />
+          {status}
+        </label>
       </div>
     </StyledCheckBox>
-
   )
 }
 

@@ -13,6 +13,12 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
   z-index: 2;
+
+   
+  @media screen and (max-width:1300px){
+    width: 1000px;
+  }
+
   @media screen and (max-width:768px){
     width: 600px;
     margin: -45px auto 10px;
@@ -40,6 +46,11 @@ export const ProgressBar = styled.div`
   margin-left: 250px;
   margin-right: 250px;
 
+  @media screen and (max-width:1200px){
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+  }
   @media screen and (max-width:768px){
     margin-left: 40px;
     margin-right: 40px;
@@ -52,8 +63,8 @@ export const ProgressBar = styled.div`
     margin-bottom: 50px;
   }
   @media screen and (max-width:375px){
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
     margin-bottom: 56px;
   }
 
@@ -126,8 +137,9 @@ export const FormField = styled.div`
    flex: 0 0 calc(36% - 30px);
   }
 
-  @media screen and (max-width:375px){
-   flex: 0 0 calc(35% - 10px);
+  @media screen and (max-width:425px){
+   flex: 0 0 calc(50% - 10px);
+
   }
 `;
 
@@ -145,6 +157,11 @@ export const Button = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-right: 10px;
   margin-top: 50px;
+
+  @media screen and (max-width:425px){
+   margin-top: 30px;
+  
+  }
 `;
 
 export const ArrowIcon = styled(FaArrowLeft)`
