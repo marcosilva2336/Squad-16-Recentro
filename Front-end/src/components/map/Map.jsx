@@ -31,6 +31,7 @@ function Map() {
               <h3 style="font-size: 13px; margin-top: 10px;">${local.nome}</h3>
               <p style="font-size: 12px; margin-top: 5px;"><strong>Rua:</strong> ${local.rua}</p>
               <p style="font-size: 12px; margin-top: 5px;"><strong>Situação:</strong> ${local.situação}</p>
+              <p style="font-size: 12px; margin-top: 5px;"><strong>IPTU:</strong> ${local.iptu}</p>
             `)
         )
         .addTo(map)
